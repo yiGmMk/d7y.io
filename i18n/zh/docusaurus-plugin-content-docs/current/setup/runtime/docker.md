@@ -6,7 +6,7 @@ slug: /setup/runtime/docker
 
 使用 dfget daemon 作为 docker daemon 的 http 代理
 
-目前 docker 不支持带有 registry-mirrors 的私有注册表，为此，我们需要为 docker daemon 使用 HTTP 代理。
+目前 docker 不支持带有 registry-mirrors 的私有仓库，为此，我们需要为 docker daemon 使用 HTTP 代理。
 
 ## 快速开始
 
