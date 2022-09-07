@@ -115,13 +115,13 @@ kubectl -n dragonfly-system exec -it ${pod_name} -- grep "peer task done" /var/l
 
 ```text
 {
-    "level": "info",
-    "ts": "2021-06-28 06:02:30.924",
-    "caller": "peer/peertask_stream_callback.go:77",
-    "msg": "stream peer task done, cost: 2838ms",
-    "peer": "172.17.0.9-1-ed7a32ae-3f18-4095-9f54-6ccfc248b16e",
-    "task": "3c658c488fd0868847fab30976c2a079d8fd63df148fb3b53fd1a418015723d7",
-    "component": "streamPeerTask"
+   "level":"info",
+   "ts":"2022-09-07 12:04:26.485",
+   "caller":"peer/peertask_conductor.go:1500",
+   "msg":"peer task done, cost: 1ms",
+   "peer":"10.140.2.175-5184-1eab18b6-bead-4b9f-b055-6c1120a30a33",
+   "task":"b423e11ddb7ab19a3c2c4c98e5ab3b1699a597e974c737bb4004edeef6016ed2",
+   "component":"PeerTask"
 }
 ```
 

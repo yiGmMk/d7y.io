@@ -78,25 +78,11 @@ If the above command has something like
 ```json
 {
   "level": "info",
-  "ts": "2022-02-23 06:06:21.506",
-  "caller": "peer/peertask_conductor.go:1167",
-  "msg": "peer task done, cost: 16052ms",
-  "peer": "172.17.189.172-1-249fa302-f107-444d-b03e-103f54b2fa4f",
-  "task": "708fff474e9885df7a9efa95b607618478912367f70a1aeb2753cfb00dfb28f7",
-  "component": "PeerTask"
-}
-```
-
-similar after formatting
-
-```json
-{
-  "level": "info",
-  "ts": "2022-02-23 06:06:21.506",
-  "caller": "peer/peertask_conductor.go:1167",
-  "msg": "peer task done, cost: 16052ms",
-  "peer": "172.17.189.172-1-249fa302-f107-444d-b03e-103f54b2fa4f",
-  "task": "708fff474e9885df7a9efa95b607618478912367f70a1aeb2753cfb00dfb28f7",
+  "ts": "2022-09-07 12:04:26.485",
+  "caller": "peer/peertask_conductor.go:1500",
+  "msg": "peer task done, cost: 1ms",
+  "peer": "10.140.2.175-5184-1eab18b6-bead-4b9f-b055-6c1120a30a33",
+  "task": "b423e11ddb7ab19a3c2c4c98e5ab3b1699a597e974c737bb4004edeef6016ed2",
   "component": "PeerTask"
 }
 ```

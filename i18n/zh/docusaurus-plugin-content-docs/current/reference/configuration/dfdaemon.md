@@ -233,8 +233,8 @@ storage:
   #                            avoid copy to output path, fast than simple strategy, but:
   #                            the output file with postfix will be the peer data for uploading to other peers
   #                            when user delete or change this file, this peer data will be corrupted
-  # default is io.d7y.storage.v2.advance
-  strategy: io.d7y.storage.v2.advance
+  # default is io.d7y.storage.v2.simple
+  strategy: io.d7y.storage.v2.simple
   # 磁盘 GC 阈值，缓存数据超过阈值后，最旧的缓存数据将会被清理。
   diskGCThreshold: 50Gi
   # 磁盘利用率 GC 阈值，磁盘利用率超过阈值后，最旧的缓存数据将会被清理。

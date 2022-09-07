@@ -59,18 +59,19 @@ crictl pull docker.io/library/busybox
 可以查看日志，判断 busybox 镜像正常拉取。
 
 ```shell
-grep 'register peer task result' /var/log/dragonfly/daemon/*.log
+grep "peer task done" /var/log/dragonfly/daemon/core.log
 ```
 
 如果正常日志输出如下:
 
 ```shell
 {
-    "level": "info",
-    "ts": "2021-02-23 20:03:20.306",
-    "caller": "client/client.go:83",
-    "msg": "register peer task result:true[200],
-    "peerId": "10.15.233.91-65000-43096-1614081800301788000",
-    "errMsg": null
+   "level":"info",
+   "ts":"2022-09-07 12:04:26.485",
+   "caller":"peer/peertask_conductor.go:1500",
+   "msg":"peer task done, cost: 1ms",
+   "peer":"10.140.2.175-5184-1eab18b6-bead-4b9f-b055-6c1120a30a33",
+   "task":"b423e11ddb7ab19a3c2c4c98e5ab3b1699a597e974c737bb4004edeef6016ed2",
+   "component":"PeerTask"
 }
 ```
