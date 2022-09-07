@@ -32,12 +32,12 @@ change log level to info
    ```yaml
    download:
      # 总下载限速
-     totalRateLimit: 200Mi
+     totalRateLimit: 1024Mi
      # 单个任务下载限速
-     perPeerRateLimit: 100Mi # 为了兼容极限环境下，默认值为 20Mi，可以按需调整
+     perPeerRateLimit: 512Mi
    upload:
      # 上传限速
-     rateLimit: 100Mi
+     rateLimit: 1024Mi
    ```
 
 2. 确认回源速度是否正常

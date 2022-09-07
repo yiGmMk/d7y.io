@@ -32,13 +32,13 @@ change log level to info
    ```yaml
    download:
      # total download limit per second
-     totalRateLimit: 200Mi
+     totalRateLimit: 1024Mi
      # per peer task download limit per second
      # default is 20Mi, this default is in consideration of extreme environments
-     perPeerRateLimit: 100Mi
+     perPeerRateLimit: 512Mi
    upload:
      # upload limit per second
-     rateLimit: 100Mi
+     rateLimit: 1024Mi
    ```
 
 2. Confirm source connection speed in dfdaemon

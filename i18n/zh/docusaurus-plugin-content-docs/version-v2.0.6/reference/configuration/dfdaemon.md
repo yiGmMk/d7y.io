@@ -109,9 +109,9 @@ download:
   # 是否计算文件摘要，设置为 false 的话，会节省内存。
   calculateDigest: true
   # 总下载限速。
-  totalRateLimit: 200Mi
+  totalRateLimit: 1024Mi
   # 单个任务下载限速。
-  perPeerRateLimit: 100Mi
+  perPeerRateLimit: 512Mi
   # 单个 Piece 下载超时时间。
   pieceDownloadTimeout: 30s
   # golang transport 选项。
@@ -183,7 +183,7 @@ download:
 # 上传服务选项。
 upload:
   # 上传限速。
-  rateLimit: 100Mi
+  rateLimit: 1024Mi
   security:
     insecure: true
     cacert: ''

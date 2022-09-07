@@ -112,9 +112,9 @@ download:
   # Calculate digest when transfer files, set false to save memory.
   calculateDigest: true
   # Total download limit per second.
-  totalRateLimit: 200Mi
+  totalRateLimit: 1024Mi
   # Per peer task download limit per second.
-  perPeerRateLimit: 100Mi
+  perPeerRateLimit: 512Mi
   # Download piece timeout.
   pieceDownloadTimeout: 30s
   # Golang transport option.
@@ -187,7 +187,7 @@ download:
 # Upload service option.
 upload:
   # Upload limit per second.
-  rateLimit: 100Mi
+  rateLimit: 1024Mi
   security:
     insecure: true
     cacert: ''
