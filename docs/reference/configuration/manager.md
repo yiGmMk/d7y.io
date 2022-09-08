@@ -59,12 +59,13 @@ database:
   #   insecureSkipVerify: true
   # Redis configure.
   redis:
-    # Redis host.
-    host: dragonfly
-    # Redis Port.
-    port: 6379
+    # Redis addresses.
+    addrs:
+      - dragonfly:6379
+    # Redis username.
+    username: ''
     # Redis password.
-    password: dragonfly
+    password: ''
     # Redis DB name.
     db: 0
     # Redis brokerDB name.

@@ -108,9 +108,10 @@ job:
   # Redis 配置。
   redis:
     # 服务地址。
-    host: ''
-    # 服务端口。
-    port: 6379
+    addrs:
+      - dragonfly:6379
+    # 用户名
+    username: ''
     # 密码。
     password: ''
     # Broker 数据库。

@@ -57,11 +57,12 @@ database:
   # redis 配置。
   redis:
     # 服务地址。
-    host: dragonfly
-    # 服务端口。
-    port: 6379
+    addrs:
+      - dragonfly:6379
+    # 用户名
+    username: ''
     # 密码。
-    password: dragonfly
+    password: ''
     # 数据库。
     db: 0
     # broker 数据库。

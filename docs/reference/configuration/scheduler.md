@@ -113,10 +113,11 @@ job:
   localWorkerNum: 5
   # Redis configuration.
   redis:
-    # Redis host.
-    host: ''
-    # Redis port.
-    port: 6379
+    # Redis addresses.
+    addrs:
+      - dragonfly:6379
+    # Redis username.
+    username: ''
     # Redis password.
     password: ''
     # Redis brokerDB name.
