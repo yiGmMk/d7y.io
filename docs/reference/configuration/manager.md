@@ -13,9 +13,9 @@ and the default path is `$HOME/.dragonfly/config/manager.yaml` in darwin.
 server:
   # GRPC server configure.
   grpc:
-    # Listen address.
-    listen: 127.0.0.1
-    # Listen port, manager will try to listen,
+    # Listen ip.
+    listenIP: 127.0.0.1
+    # Listen port.
     # when this port is not available, manager will try next port.
     port:
       start: 65003

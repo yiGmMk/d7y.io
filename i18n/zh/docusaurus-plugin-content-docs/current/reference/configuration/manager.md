@@ -13,7 +13,7 @@ server:
   # GRPC 服务配置。
   grpc:
     # 监听的 ip 地址。
-    listen: 127.0.0.1
+    listenIP: 127.0.0.1
     # 监听的端口, manager 会从 start 到 end 之间的按顺序中选择一个可用端口。
     port:
       start: 65003
