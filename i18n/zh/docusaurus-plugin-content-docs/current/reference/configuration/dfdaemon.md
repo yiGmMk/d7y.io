@@ -88,11 +88,9 @@ scheduler:
 
 # 用于注册到调度器的 daemon 信息。
 host:
-  # 服务监听地址。
-  listenIP: 0.0.0.0
-  # 访问 IP 地址。
-  # 其他 daemon 可以通过这个 IP 地址连接过来。
-  advertiseIP: 0.0.0.0
+  # # 访问 IP 地址。
+  # # 其他 daemon 可以通过这个 IP 地址连接过来。
+  # advertiseIP: 0.0.0.0
   # 地理信息, 通过 "|" 符号分隔。
   location: ''
   # 机房信息。
@@ -171,8 +169,8 @@ download:
       key: ''
       tlsVerify: true
     tcpListen:
-      # 监听地址。
-      listen: 0.0.0.0
+      # # 监听地址。
+      # listen: 0.0.0.0
       # 监听端口。
       # 指定固定端口，也可以指定端口范围。
       port: 65000
@@ -191,8 +189,8 @@ upload:
     key: ''
     tlsVerify: false
   tcpListen:
-    # 监听地址。
-    listen: 0.0.0.0
+    # # 监听地址。
+    # listen: 0.0.0.0
     # 监听端口。
     # 指定固定端口，也可以指定端口范围。
     port: 65002
@@ -216,8 +214,8 @@ objectStorage:
     insecure: true
     tlsVerify: true
   tcpListen:
-    # 监听地址。
-    listen: 0.0.0.0
+    # # 监听地址。
+    # listen: 0.0.0.0
     # 监听端口。
     port: 65004
 
@@ -252,8 +250,8 @@ health:
     key: ''
     tlsVerify: false
   tcpListen:
-    # 监听地址。
-    listen: 0.0.0.0
+    # # 监听地址。
+    # listen: 0.0.0.0
     # 监听端口。
     # 指定固定端口，也可以指定端口范围。
     port: 40901
@@ -283,8 +281,8 @@ proxy:
     # 主要用在部署 kubernetes 中的时候，daemon 不使用 host network 时，监听宿主机的端口。
     # 仅支持 Linux。
     namespace: ''
-    # 监听地址。
-    listen: 0.0.0.0
+    # # 监听地址。
+    # listen: 0.0.0.0
     # 监听端口。
     port: 65001
   registryMirror:
@@ -367,4 +365,8 @@ security:
     validityPeriod: 4320h
 # 数据收集服务地址。
 # metrics: ':8000'
+
+network:
+  # 开启 IPv6。
+  enableIPv6: false
 ```

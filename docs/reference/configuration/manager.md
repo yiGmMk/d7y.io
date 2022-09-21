@@ -13,10 +13,10 @@ and the default path is `$HOME/.dragonfly/config/manager.yaml` in darwin.
 server:
   # GRPC server configure.
   grpc:
-    # Advertise ip.
-    advertiseIP: 127.0.0.1
-    # Listen ip.
-    listenIP: 0.0.0.0
+    # # Advertise ip.
+    # advertiseIP: 127.0.0.1
+    # # Listen ip.
+    # listenIP: 0.0.0.0
     # Listen port.
     # when this port is not available, manager will try next port.
     port:
@@ -138,6 +138,10 @@ security:
     ipAddresses:
     # validityPeriod is the validity period  of certificate.
     validityPeriod: 87600h
+
+network:
+  # Enable ipv6.
+  enableIPv6: false
 
 # Console shows log on console.
 console: false

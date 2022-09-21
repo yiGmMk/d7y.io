@@ -90,12 +90,9 @@ scheduler:
 
 # Current host info used for scheduler.
 host:
-  # TCP service listen address,
-  # port should be set by other options.
-  listenIP: 0.0.0.0
-  # Access ip for other peers,
-  # when local ip is different with access ip, advertiseIP should be set.
-  advertiseIP: 0.0.0.0
+  # # Access ip for other peers,
+  # # when local ip is different with access ip, advertiseIP should be set.
+  # advertiseIP: 0.0.0.0
   # Geographical location, separated by "|" characters.
   location: ''
   # IDC deployed by daemon.
@@ -174,8 +171,8 @@ download:
       key: ''
       tlsVerify: true
     tcpListen:
-      # Listen address.
-      listen: 0.0.0.0
+      # # Listen address.
+      # listen: 0.0.0.0
       # Listen port, daemon will try to listen,
       # when this port is not available, daemon will try next port.
       port: 65000
@@ -195,8 +192,8 @@ upload:
     key: ''
     tlsVerify: false
   tcpListen:
-    # Listen address.
-    listen: 0.0.0.0
+    # # Listen address.
+    # listen: 0.0.0.0
     # Listen port, daemon will try to listen,
     # when this port is not available, daemon will try next port.
     port: 65002
@@ -223,8 +220,8 @@ objectStorage:
     insecure: true
     tlsVerify: true
   tcpListen:
-    # Listen address.
-    listen: 0.0.0.0
+    # # Listen address.
+    # listen: 0.0.0.0
     # Listen port.
     port: 65004
 
@@ -259,8 +256,8 @@ health:
     key: ''
     tlsVerify: false
   tcpListen:
-    # Listen address.
-    listen: 0.0.0.0
+    # # Listen address.
+    # listen: 0.0.0.0
     # Listen port, daemon will try to listen,
     # when this port is not available, daemon will try next port.
     port: 40901
@@ -294,8 +291,8 @@ proxy:
     # It's useful for running daemon in pod with ip allocated and listening the special port in host net namespace.
     # Linux only.
     namespace: ''
-    # Listen address.
-    listen: 0.0.0.0
+    # # Listen address.
+    # listen: 0.0.0.0
     # Listen port, daemon will try to listen,
     # when this port is not available, daemon will try next port.
     port: 65001
@@ -378,4 +375,8 @@ security:
     validityPeriod: 4320h
 # Prometheus metrics address.
 # metrics: ':8000'
+
+network:
+  # Enable ipv6.
+  enableIPv6: false
 ```

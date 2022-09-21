@@ -10,10 +10,10 @@ Linux 环境下默认 Scheduler 配置路径为 `/etc/dragonfly/scheduler.yaml`,
 ```yaml
 # Scheduler 服务实例配置信息。
 server:
-  # 通告 IP.
-  advertiseIP: 127.0.0.1
-  # 监听 IP.
-  listenIP: 0.0.0.0
+  # # 通告 IP.
+  # advertiseIP: 127.0.0.1
+  # # 监听 IP.
+  # listenIP: 0.0.0.0
   # # 服务地址。
   # host: localhost
   # 服务监听端口。
@@ -158,6 +158,10 @@ security:
   certSpec:
     # validityPeriod 是颁发证书的有效时长。
     validityPeriod: 4320h
+
+network:
+  # 开启 IPv6。
+  enableIPv6: false
 
 # console 是否在控制台程序中显示日志。
 console: false

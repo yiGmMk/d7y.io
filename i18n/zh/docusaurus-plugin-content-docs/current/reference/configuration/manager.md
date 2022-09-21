@@ -12,10 +12,10 @@ Linux 环境下默认 Manager 配置路径为 `/etc/dragonfly/manager.yaml`, Dar
 server:
   # GRPC 服务配置。
   grpc:
-    # 通告 IP.
-    advertiseIP: 127.0.0.1
-    # 监听 IP.
-    listenIP: 0.0.0.0
+    # # 通告 IP.
+    # advertiseIP: 127.0.0.1
+    # # 监听 IP.
+    # listenIP: 0.0.0.0
     # 监听的端口, manager 会从 start 到 end 之间的按顺序中选择一个可用端口。
     port:
       start: 65003
@@ -132,6 +132,10 @@ security:
     ipAddresses:
     # validityPeriod 是颁发证书的有效时长。
     validityPeriod: 87600h
+
+network:
+  # 开启 IPv6。
+  enableIPv6: false
 
 # console 是否在控制台程序中显示日志。
 console: false
