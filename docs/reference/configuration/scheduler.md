@@ -11,10 +11,10 @@ and the default path is `$HOME/.dragonfly/config/scheduler.yaml` in darwin.
 ```yaml
 # Server scheduler instance configuration.
 server:
-  # # Server advertise ip.
-  # advertiseIP: 127.0.0.1
-  # # Server listen ip.
-  # listenIP: 0.0.0.0
+  # Advertise ip.
+  advertiseIP: 127.0.0.1
+  # Listen ip.
+  listenIP: 0.0.0.0
   # Port is the ip and port scheduler server listens on.
   port: 8002
   # # Server host.
