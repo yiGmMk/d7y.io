@@ -117,6 +117,8 @@ download:
   perPeerRateLimit: 512Mi
   # Download piece timeout.
   pieceDownloadTimeout: 30s
+  # When request data with range header, prefetch data not in range.
+  prefetch: false
   # Golang transport option.
   transportOption:
     # Ddial timeout.

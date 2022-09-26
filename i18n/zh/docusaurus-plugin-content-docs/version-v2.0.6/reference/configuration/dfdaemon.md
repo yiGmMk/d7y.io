@@ -114,6 +114,8 @@ download:
   perPeerRateLimit: 512Mi
   # 单个 Piece 下载超时时间。
   pieceDownloadTimeout: 30s
+  # 当请求使用 Range Header，请求部分数据的时候，可以预先获取非 Range 内的数据。
+  prefetch: false
   # golang transport 选项。
   transportOption:
     # 连接超时时间。
