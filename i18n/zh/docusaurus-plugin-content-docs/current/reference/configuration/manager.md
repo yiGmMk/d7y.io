@@ -103,7 +103,7 @@ objectStorage:
 # 数据收集服务。
 metrics:
   # 启动数据收集服务。
-  enable: false
+  enable: true
   # 数据服务地址。
   addr: ':8000'
   # 开启 peer gauge 数据。

@@ -140,7 +140,7 @@ storage:
 # Enable prometheus metrics.
 metrics:
   # Scheduler enable metrics service.
-  enable: false
+  enable: true
   # Metrics service address.
   addr: ':8000'
   # Enable peer host metrics.
