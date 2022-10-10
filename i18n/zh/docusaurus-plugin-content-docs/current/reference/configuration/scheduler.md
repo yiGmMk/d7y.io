@@ -53,17 +53,13 @@ scheduler:
   # 数据回收策略。
   gc:
     # Peer 的回收间隔。
-    peerGCInterval: 10m
+    peerGCInterval: 10s
     # 不活跃的 peer 的存活时间。
-    peerTTL: 12h
+    peerTTL: 24h
     # Task 的回收间隔。
-    taskGCInterval: 10m
-    # 不活跃的 task 的存活时间。
-    taskTTL: 24h
+    taskGCInterval: 30m
     # Host 的回收间隔。
-    hostGCInterval: 30m
-    # 不活跃的 host 的存活时间。
-    hostTTL: 48h
+    hostGCInterval: 1h
 
 # 动态数据配置。
 dynConfig:
