@@ -272,7 +272,7 @@ func DragonflyPluginInit(option map[string]string) (interface{}, map[string]stri
 ```
 module example.com/d7yfs
 
-go 1.18
+go 1.19
 
 require d7y.io/dragonfly/v2 v2.0.1
 
