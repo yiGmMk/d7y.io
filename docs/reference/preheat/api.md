@@ -35,7 +35,7 @@ curl --location --request POST 'http://dragonfly-manager:8080/api/v1/jobs' \
 }'
 ```
 
-If the output of command above has content like
+The command-line log returns the preheat job id.
 
 ```bash
 {
@@ -52,7 +52,7 @@ If the output of command above has content like
 }
 ```
 
-Polling the preheating status with id. if status is `SUCCESS`.
+Polling the preheating status with job id.
 
 ```bash
 curl --request GET 'http://dragonfly-manager:8080/api/v1/jobs/1'
