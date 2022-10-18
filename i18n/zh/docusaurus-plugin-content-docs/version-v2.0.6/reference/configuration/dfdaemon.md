@@ -92,7 +92,7 @@ host:
   listenIP: 0.0.0.0
   # 访问 IP 地址。
   # 其他 daemon 可以通过这个 IP 地址连接过来。
-  advertiseIP: 0.0.0.0
+  # advertiseIP: 127.0.0.1
   # 地理信息, 通过 "|" 符号分隔。
   location: ''
   # 机房信息。

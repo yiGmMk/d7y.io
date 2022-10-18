@@ -10,6 +10,9 @@ Linux 环境下默认 Scheduler 配置路径为 `/etc/dragonfly/scheduler.yaml`,
 ```yaml
 # Scheduler 服务实例配置信息。
 server:
+  # # 访问 IP 地址。
+  # # 其他服务可以通过这个 IP 地址连接过来。
+  # advertiseIP: 127.0.0.1
   # # 服务 IP。
   # ip: 127.0.0.1
   # # 服务地址。

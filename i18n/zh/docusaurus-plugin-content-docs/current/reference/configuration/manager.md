@@ -12,7 +12,8 @@ Linux 环境下默认 Manager 配置路径为 `/etc/dragonfly/manager.yaml`, Dar
 server:
   # GRPC 服务配置。
   grpc:
-    # # 通告 IP.
+    # # 访问 IP 地址。
+    # # 其他服务可以通过这个 IP 地址连接过来。
     # advertiseIP: 127.0.0.1
     # # 监听 IP.
     # listenIP: 0.0.0.0

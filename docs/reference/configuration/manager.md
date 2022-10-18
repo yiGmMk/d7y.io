@@ -13,7 +13,8 @@ and the default path is `$HOME/.dragonfly/config/manager.yaml` in darwin.
 server:
   # GRPC server configure.
   grpc:
-    # # Advertise ip.
+    # # Access ip for other services,
+    # # when local ip is different with access ip, advertiseIP should be set.
     # advertiseIP: 127.0.0.1
     # # Listen ip.
     # listenIP: 0.0.0.0
