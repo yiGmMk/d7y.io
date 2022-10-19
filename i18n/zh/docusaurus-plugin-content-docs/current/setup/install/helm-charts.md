@@ -7,10 +7,12 @@ title: Helm Charts
 Dragonfly 部署具体模块包括 4 部分: scheduler 和 seed peer 会作为 `StatefulSets` 部署,
 dfdaemon 会作为 `DaemonSets` 部署, manager 会作为 `Deployments` 部署。
 
-## 依赖条件
+## 依赖
 
-- Kubernetes cluster 1.20+
-- Helm v3.8.0+
+| 所需软件           | 版本要求 |
+| ------------------ | -------- |
+| Kubernetes cluster | 1.20+    |
+| Helm               | v3.8.0+  |
 
 ## Helm Chart 运行时配置
 
