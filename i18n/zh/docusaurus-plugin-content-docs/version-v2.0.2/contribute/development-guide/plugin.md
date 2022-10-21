@@ -105,7 +105,7 @@ func (c *client) GetLastModified(request *source.Request) (int64, error) {
 
 func DragonflyPluginInit(option map[string]string) (interface{}, map[string]string, error) {
 	return &client{}, map[string]string{
-		"schema":      "d7yfs",
+		"scheme":      "d7yfs",
 		"type":        "resource",
 		"name":        "d7yfs",
 		"buildCommit": buildCommit,
@@ -190,7 +190,7 @@ go build -ldflags="-X main.buildTime=${BUILD_TIME} -X main.buildCommit=${BUILD_C
 
 ```text
 search plugin in /usr/local/dragonfly/plugins
-resource plugin d7yfs, location: d7y-resource-plugin-d7yfs.so, attribute: {"buildCommit":"bb65f13","buildTime":"2021-12-13T08:53:04Z","name":"d7yfs","schema":"d7yfs","type":"resource","vendor":"d7y"}
+resource plugin d7yfs, location: d7y-resource-plugin-d7yfs.so, attribute: {"buildCommit":"bb65f13","buildTime":"2021-12-13T08:53:04Z","name":"d7yfs","scheme":"d7yfs","type":"resource","vendor":"d7y"}
 ```
 
 <!-- markdownlint-restore -->
