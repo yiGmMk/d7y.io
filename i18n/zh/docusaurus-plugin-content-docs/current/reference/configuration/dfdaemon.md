@@ -38,7 +38,7 @@ dataDir: ''
 # 当 daemon 退出是, 是否保存缓存数据。
 # 保留缓存数据在升级 daemon 的时候比较有用。
 # 默认为 false。
-keepStorage: true
+keepStorage: false
 
 # console 是否在控制台程序中显示日志。
 console: false

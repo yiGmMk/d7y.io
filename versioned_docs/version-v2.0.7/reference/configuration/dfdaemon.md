@@ -39,7 +39,7 @@ dataDir: ''
 # When daemon exit, keep peer task data or not.
 # it is usefully when upgrade daemon service, all local cache will be saved
 # default is false.
-keepStorage: true
+keepStorage: false
 
 # Console shows log on console.
 console: false
