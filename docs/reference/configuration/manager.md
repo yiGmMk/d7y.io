@@ -27,6 +27,14 @@ server:
   rest:
     # REST server address
     addr: :8080
+  # cacheDir is dynconfig cache storage directory.
+  # In linux, default value is /var/cache/dragonfly.
+  # In macos(just for testing), default value is /Users/$USER/.dragonfly/cache.
+  cacheDir: ''
+  # logDir is the log storage directory.
+  # In linux, default value is /var/log/dragonfly.
+  # In macos(just for testing), default value is /Users/$USER/.dragonfly/logs.
+  logDir: ''
 
 # Database info used for server.
 database:
