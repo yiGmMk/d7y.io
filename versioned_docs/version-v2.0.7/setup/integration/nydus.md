@@ -412,3 +412,38 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 ```
 
 <!-- markdownlint-restore -->
+
+## Performance testing
+
+Test the performance of single-machine image download after the integration of
+`nydus mirror` mode and `dragonfly P2P`. The tests were performed on the same machine.
+Due to the influence of the network environment of the machine itself,
+the actual download time is not important, but the ratio of the increase in
+the download time in different scenarios is very important.
+
+![nydus-mirror-dragonfly](../../resource/setup/nydus-mirror-dragonfly.png)
+
+- OCIv1: Use containerd to pull image directly.
+- Nydus Cold Boot: Use containerd to pull image via nydus-snapshotter and doesn't hit any cache.
+- Nydus & Dragonfly Cold Boot: Use containerd to pull image via nydus-snapshotter.
+  Transfer the traffic to dragonfly P2P based on nydus mirror mode and no cache hits.
+- Hit Dragonfly Remote Peer Cache: Use containerd to pull image via nydus-snapshotter.
+  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the remote peer cache.
+- Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
+  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the local peer cache.
+- Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
+  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the nydus local cache.
+
+Test results show `nydus mirror` mode and `dragonfly P2P` integration.
+Use the `nydus` download image to compare the `OCIv1` mode,
+It can effectively reduce the image download time.
+The cold boot of `nydus` and `nydus & draognfly` are basically close.
+All hits to `dragonfly` cache are better than `nydus` only.
+The most important thing is that if a very large `kubernetes` cluster uses `nydus` to pull images.
+The download of each image layer will be generate as many range requests as needed.
+The `QPS` of the source site of the registry is too high.
+Causes the `QPS` of the registry to be relatively high.
+Dragonfly can effectively reduce the number of requests and
+download traffic for back-to-source registry.
+In the best case, `dragonfly` can make each download task in a large `kubernetes` cluster
+is only back-to-source registry once.

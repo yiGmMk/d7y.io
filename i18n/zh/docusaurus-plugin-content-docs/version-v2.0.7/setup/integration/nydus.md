@@ -410,3 +410,26 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 ```
 
 <!-- markdownlint-restore -->
+
+## 性能测试
+
+测试 Nydus Mirror 模式与 Dragonfly P2P 集成后的单机镜像下载的性能。测试是在同一台机器上面做不同场景的测试。由于机器本身网络环境、配置等影响，实际下载时间不具有参考价值，但是不同场景下载时间所提升的比率是有重要意义的。
+
+![nydus-mirror-dragonfly](../../resource/setup/nydus-mirror-dragonfly.png)
+
+- OCIv1: 使用 Containerd 直接拉取镜像并且启动成功的数据。
+- Nydus Cold Boot: 使用 Containerd 通过 Nydus 拉取镜像，没有命中任何缓存并且启动成功的数据。
+- Nydus & Dragonfly Cold Boot: 使用 Containerd 通过 Nydus 拉取镜像，并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在没有命中任何缓存并且启动成功的数据。
+- Hit Dragonfly Remote Peer Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Dragonfly 的远端 Peer 缓存的情况下并且成功启动的数据。
+- Hit Dragonfly Local Peer Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Dragonfly 的本地 Peer 缓存的情况下并且成功启动的数据。
+- Hit Nydus Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Nydus 的本地缓存的情况下并且成功启动的数据。
+
+测试结果表明 Nydus Mirror 模式和 Dragonfly P2P 集成。使用 Nydus 下载镜像对比 `OCIv1` 的模式，
+能够有效减少镜像下载时间。Nydus 冷启动和 Nydus & Dragonfly 冷启动数据基本接近。
+其他命中 Dragonfly Cache 的结果均好于只使用 Nydus 的情况。最重要的是如果很大规模集群使用 Nydus 拉取镜像，
+会将每个镜像层的下载分解按需产生很多 Range 请求。增加镜像仓库源站 `QPS`。
+而 Dragonfly 可以基于 P2P 技术有效减少回源镜像仓库的请求数量和下载流量。
+最优的情况，Dragonfly 可以保证大规模集群中每个下载任务只回源一次。
