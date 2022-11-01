@@ -205,7 +205,7 @@ kubectl apply -f peer-service-config.yaml
 
 ### 下载安装 Nydus 工具
 
-下载 `containerd-nydus-grpc` 二进制文件, 下载地址为 [nydus-snapshotter/releases][https://github.com/containerd/nydus-snapshotter/releases/latest]:
+下载 `containerd-nydus-grpc` 二进制文件, 下载地址为 [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
 ```shell
 NYDUS_SNAPSHOTTER_VERSION=0.3.0
@@ -219,7 +219,7 @@ tar zxvf nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 sudo cp nydus-snapshotter/containerd-nydus-grpc /usr/local/bin/
 ```
 
-下载 `nydus-image`、`nydusd` 以及 `nydusify` 二进制文件, 下载地址为 [dragonflyoss/image-service][https://github.com/dragonflyoss/image-service/releases/latest]:
+下载 `nydus-image`、`nydusd` 以及 `nydusify` 二进制文件, 下载地址为 [dragonflyoss/image-service](https://github.com/dragonflyoss/image-service/releases/latest):
 
 ```shell
 NYDUS_VERSION=2.1.0

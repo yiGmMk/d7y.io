@@ -205,7 +205,7 @@ The example uses Systemd to manage the `nydus-snapshotter` service.
 
 ### Install nydus tools {#install-nydus-tools}
 
-Download `containerd-nydus-grpc` binary, please refer to [nydus-snapshotter/releases][https://github.com/containerd/nydus-snapshotter/releases/latest]:
+Download `containerd-nydus-grpc` binary, please refer to [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
 ```shell
 NYDUS_SNAPSHOTTER_VERSION=0.3.0
@@ -219,7 +219,7 @@ Install `containerd-nydus-grpc` tool:
 sudo cp nydus-snapshotter/containerd-nydus-grpc /usr/local/bin/
 ```
 
-Download `nydus-image`, `nydusd` and `nydusify` binaries, please refer to [dragonflyoss/image-service][https://github.com/dragonflyoss/image-service/releases/latest]:
+Download `nydus-image`, `nydusd` and `nydusify` binaries, please refer to [dragonflyoss/image-service](https://github.com/dragonflyoss/image-service/releases/latest):
 
 ```shell
 NYDUS_VERSION=2.1.0
@@ -445,5 +445,4 @@ The `QPS` of the source site of the registry is too high.
 Causes the `QPS` of the registry to be relatively high.
 Dragonfly can effectively reduce the number of requests and
 download traffic for back-to-source registry.
-In the best case, `dragonfly` can make each download task in a large `kubernetes` cluster
-is only back-to-source registry once.
+In the best case, `dragonfly` can make the same task back-to-source download only once.
