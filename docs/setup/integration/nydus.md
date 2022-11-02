@@ -437,7 +437,7 @@ the download time in different scenarios is very important.
 Test results show `nydus mirror` mode and `dragonfly P2P` integration.
 Use the `nydus` download image to compare the `OCIv1` mode,
 It can effectively reduce the image download time.
-The cold boot of `nydus` and `nydus & draognfly` are basically close.
+The cold boot of `nydus` and `nydus & dragonfly` are basically close.
 All hits to `dragonfly` cache are better than `nydus` only.
 The most important thing is that if a very large `kubernetes` cluster uses `nydus` to pull images.
 The download of each image layer will be generate as many range requests as needed.
