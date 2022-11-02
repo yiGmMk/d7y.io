@@ -16,22 +16,27 @@ aliveTime: 0s
 # Daemon gc task running interval.
 gcInterval: 1m0s
 
-# Daemon work directory, daemon will change current working directory to this.
+# WorkHome is working directory.
 # In linux, default value is /usr/local/dragonfly.
 # In macos(just for testing), default value is /Users/$USER/.dragonfly.
 workHome: ''
 
-# cacheDir is dynconfig cache storage directory.
-# In linux, default value is /var/cache/dragonfly.
-# In macos(just for testing), default value is /Users/$USER/.dragonfly/cache.
-cacheDir: ''
-
-# logDir is the log storage directory.
+# logDir is the log directory.
 # In linux, default value is /var/log/dragonfly.
 # In macos(just for testing), default value is /Users/$USER/.dragonfly/logs.
 logDir: ''
 
-# dataDir is the download data storage directory.
+# cacheDir is dynconfig cache directory.
+# In linux, default value is /var/cache/dragonfly.
+# In macos(just for testing), default value is /Users/$USER/.dragonfly/cache.
+cacheDir: ''
+
+# pluginDir is the plugin directory.
+# In linux, default value is /usr/local/dragonfly/plugins.
+# In macos(just for testing), default value is /Users/$USER/.dragonfly/plugins.
+pluginDir: ''
+
+# dataDir is the download data directory.
 # In linux, default value is /var/lib/dragonfly.
 # In macos(just for testing), default value is /Users/$USER/.dragonfly/data.
 dataDir: ''

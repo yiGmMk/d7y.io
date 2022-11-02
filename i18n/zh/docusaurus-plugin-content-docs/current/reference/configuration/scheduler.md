@@ -23,14 +23,18 @@ server:
   # Linux 上默认目录 /usr/local/dragonfly。
   # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly。
   workHome: ''
-  # 服务的动态配置缓存目录。
-  # Linux 上默认目录 /var/cache/dragonfly。
-  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
-  cacheDir: ''
   # 服务的日志目录。
   # Linux 上默认目录 /var/log/dragonfly。
   # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/logs。
   logDir: ''
+  # 服务的动态配置缓存目录。
+  # Linux 上默认目录 /var/cache/dragonfly。
+  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
+  cacheDir: ''
+  # 服务的插件目录。
+  # Linux 上默认目录 /usr/local/dragonfly/plugins。
+  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/plugins。
+  pluginDir: ''
   # 服务的存储目录。
   # Linux 上默认目录 /var/lib/dragonfly。
   # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/data。

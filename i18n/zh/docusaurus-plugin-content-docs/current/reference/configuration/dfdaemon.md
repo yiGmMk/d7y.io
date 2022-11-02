@@ -15,22 +15,27 @@ aliveTime: 0s
 # Daemon gc 间隔。
 gcInterval: 1m0s
 
-# Daemon 工作目录。
+# 服务工作目录。
 # Linux 上默认目录 /usr/local/dragonfly。
 # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly。
 workHome: ''
 
-# Daemon 动态配置缓存目录。
-# Linux 上默认目录 /var/cache/dragonfly。
-# macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
-cacheDir: ''
-
-# Daemon 日志目录。
+# 服务的日志目录。
 # Linux 上默认目录 /var/log/dragonfly。
 # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/logs。
 logDir: ''
 
-# Daemon 数据目录。
+# 服务的动态配置缓存目录。
+# Linux 上默认目录 /var/cache/dragonfly。
+# macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
+cacheDir: ''
+
+# 服务的插件目录。
+# Linux 上默认目录 /usr/local/dragonfly/plugins。
+# macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/plugins。
+pluginDir: ''
+
+# 服务的存储目录。
 # Linux 上默认目录为 /var/lib/dragonfly。
 # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/data/。
 dataDir: ''

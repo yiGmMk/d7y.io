@@ -25,14 +25,22 @@ server:
   rest:
     # 标准的 rest 服务地址: ip:port, ip 不配置则默认为0.0.0.0。
     addr: :8080
-  # 服务的动态配置缓存目录。
-  # Linux 上默认目录 /var/cache/dragonfly。
-  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
-  cacheDir: ''
+  # 服务工作目录。
+  # Linux 上默认目录 /usr/local/dragonfly。
+  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly。
+  workHome: ''
   # 服务的日志目录。
   # Linux 上默认目录 /var/log/dragonfly。
   # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/logs。
   logDir: ''
+  # 服务的动态配置缓存目录。
+  # Linux 上默认目录 /var/cache/dragonfly。
+  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/cache。
+  cacheDir: ''
+  # 服务的插件目录。
+  # Linux 上默认目录 /usr/local/dragonfly/plugins。
+  # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/plugins。
+  pluginDir: ''
 
 # 数据库配置, 当前只支持 mysql 以及 redis。
 database:
