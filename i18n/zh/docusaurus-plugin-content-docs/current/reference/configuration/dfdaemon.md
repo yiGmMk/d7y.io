@@ -257,6 +257,8 @@ health:
     key: ''
     tlsVerify: false
   tcpListen:
+    # 健康度检查路径，默认为 /server/ping。
+    path: /server/ping
     # # 监听地址。
     # listen: 0.0.0.0
     # 监听端口。

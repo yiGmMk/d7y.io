@@ -263,6 +263,8 @@ health:
     key: ''
     tlsVerify: false
   tcpListen:
+    # Health path, default value is /server/ping.
+    path: /server/ping
     # # Listen address.
     # listen: 0.0.0.0
     # Listen port, daemon will try to listen,
