@@ -5,7 +5,7 @@ author_title: developer
 author_url: https://github.com/anjia0532
 author_image_url: https://avatars.githubusercontent.com/u/15098916?s=400&u=23a4b699baa0ed924cf1db40b9edb614d0263621&v=4
 tags: [docker, dragonfly, dragonfly2, containerd]
-description: Introduce how to use Google jib 和 Dragonfly2 to speed up Docker images transmission
+description: Introduce how to use Google jib and Dragonfly2 to speed up Docker images transmission
 image: https://avatars.githubusercontent.com/u/15098916?s=400&u=23a4b699baa0ed924cf1db40b9edb614d0263621&v=4
 hide_table_of_contents: false
 ---

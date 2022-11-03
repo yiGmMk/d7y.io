@@ -20,7 +20,7 @@ This document will help you experience how to use dragonfly with nydus.
 
 <!-- markdownlint-restore -->
 
-## Install Dragonfly {#install-dragonfly}
+## Install dragonfly {#install-dragonfly}
 
 For detailed installation documentation based on kubernetes cluster, please refer to [quick-start-kubernetes](../../getting-started/quick-start/kubernetes.md).
 
@@ -413,7 +413,7 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 
 <!-- markdownlint-restore -->
 
-## Performance testing
+## Performance testing {#performance-testing}
 
 Test the performance of single-machine image download after the integration of
 `nydus mirror` mode and `dragonfly P2P`. The tests were performed on the same machine.

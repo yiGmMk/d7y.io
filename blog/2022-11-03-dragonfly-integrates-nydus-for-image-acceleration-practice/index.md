@@ -1,11 +1,33 @@
 ---
-id: nydus
-title: Nydus
+title: Dragonfly integrates nydus for image acceleration practive
+author: Gaius
+author_title: Dragonfly Maintainer
+author_url: https://github.com/gaius-qi
+author_image_url: https://avatars.githubusercontent.com/u/15955374?s=96&v=4
+tags: [dragonfly, container image, OCI, nydus, containerd, cncf]
+description: Introduce how dragonfly integrates nydus to improve image download speed.
+hide_table_of_contents: false
 ---
 
-This document will help you experience how to use dragonfly with nydus.
+## Introduce definition {#introduce-definition}
 
-## Prerequisites {#prerequisites}
+[Dragonfly](https://d7y.io/) has been selected and put into production use by
+many Internet companies since its open source in 2017,
+and entered CNCF in October 2018, becoming the third project in China to enter the CNCF Sandbox. In April 2020,
+CNCF TOC voted to accept Dragonfly as an CNCF Incubating project.
+Dragonfly has developed the next version through production practice,
+which has absorbed the advantages of Dragonfly1.x and made a lot of optimizations for known problems.
+
+[Nydus](https://nydus.dev/) optimized the OCIv1 image format, and designed a brand new image-based filesystem,
+so that the container can download the image on demand, and the container no longer needs to
+download the complete image to start the container. In the latest version,
+dragonfly has completed the integration with the nydus, allowing the container to
+start downloading images on demand, reducing the amount of downloads. The dragonfly P2P transmission method can
+also be used during the transmission process to reduce the back-to-source traffic and increase the speed.
+
+## Quick start {#quick-start}
+
+### Prerequisites {#prerequisites}
 
 <!-- markdownlint-disable -->
 
@@ -20,11 +42,11 @@ This document will help you experience how to use dragonfly with nydus.
 
 <!-- markdownlint-restore -->
 
-## Install dragonfly {#install-dragonfly}
+### Install dragonfly {#install-dragonfly}
 
-For detailed installation documentation based on kubernetes cluster, please refer to [quick-start-kubernetes](../../getting-started/quick-start/kubernetes.md).
+For detailed installation documentation based on kubernetes cluster, please refer to [quick-start-kubernetes](https://d7y.io/docs/getting-started/quick-start/kubernetes/).
 
-## Setup kubernetes cluster {#setup-kubernetes-cluster}
+### Setup kubernetes cluster {#setup-kubernetes-cluster}
 
 Create kind multi-node cluster configuration file `kind-config.yaml`, configuration content is as follows:
 
@@ -52,7 +74,7 @@ Switch the context of kubectl to kind cluster:
 kubectl config use-context kind-kind
 ```
 
-## Kind loads dragonfly image {#kind-loads-dragonfly-image}
+### Kind loads dragonfly image {#kind-loads-dragonfly-image}
 
 Pull dragonfly latest images:
 
@@ -70,7 +92,7 @@ kind load docker-image dragonflyoss/manager:latest
 kind load docker-image dragonflyoss/dfdaemon:latest
 ```
 
-## Create dragonfly cluster based on helm charts {#create-dragonfly-cluster-based-on-helm-charts}
+### Create dragonfly cluster based on helm charts {#create-dragonfly-cluster-based-on-helm-charts}
 
 Create helm charts configuration file `charts-config.yaml` and enable prefetching, configuration content is as follows:
 
@@ -197,13 +219,13 @@ Create a peer service using the configuration file:
 kubectl apply -f peer-service-config.yaml
 ```
 
-## Install nydus for containerd {#install-nydus-for-containerd}
+### Install nydus for containerd {#install-nydus-for-containerd}
 
 For detailed nydus installation documentation based on containerd environment, please refer to
 [nydus-setup-for-containerd-environment](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#nydus-setup-for-containerd-environment).
 The example uses Systemd to manage the `nydus-snapshotter` service.
 
-### Install nydus tools {#install-nydus-tools}
+#### Install nydus tools {#install-nydus-tools}
 
 Download `containerd-nydus-grpc` binary, please refer to [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
@@ -233,7 +255,7 @@ Install `nydus-image`, `nydusd` and `nydusify` tools:
 sudo cp nydus-static/nydus-image nydus-static/nydusd nydus-static/nydusify /usr/local/bin/
 ```
 
-### Install nydus snapshotter plugin for containerd {#install-nydus-snapshotter-plugin-for-containerd}
+#### Install nydus snapshotter plugin for containerd {#install-nydus-snapshotter-plugin-for-containerd}
 
 Configure containerd to use the `nydus-snapshotter` plugin, please refer to
 [configure-and-start-containerd](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#configure-and-start-containerd).
@@ -265,7 +287,7 @@ $ ctr -a /run/containerd/containerd.sock plugin ls | grep nydus
 io.containerd.snapshotter.v1          nydus                    -              ok
 ```
 
-### Systemd starts nydus snapshotter service {#systemd-starts-snapshotter-service}
+#### Systemd starts nydus snapshotter service {#systemd-starts-snapshotter-service}
 
 For detailed configuration documentation based on nydus mirror mode, please refer to
 [enable-mirrors-for-storage-backend](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusd.md#enable-mirrors-for-storage-backend).
@@ -374,7 +396,7 @@ Oct 19 08:01:00 kvm-gaius-0 containerd-nydus-grpc[2853636]: time="2022-10-19T08:
 
 <!-- markdownlint-restore -->
 
-### Convert an image to nydus format {#convert-an-image-to-nydus-format}
+#### Convert an image to nydus format {#convert-an-image-to-nydus-format}
 
 Convert `python:latest` image to nydus format, you can use
 the converted `dragonflyoss/python-nydus:latest` image and skip this step.
@@ -394,7 +416,7 @@ DOCKERHUB_REPO_NAME=dragonflyoss
 sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:latest --target $DOCKERHUB_REPO_NAME/python-nydus:latest
 ```
 
-### Try nydus with nerdctl {#try-nydus-with-nerdctl}
+#### Try nydus with nerdctl {#try-nydus-with-nerdctl}
 
 Running `python-nydus:latest` with nerdctl:
 
@@ -421,7 +443,7 @@ Due to the influence of the network environment of the machine itself,
 the actual download time is not important, but the ratio of the increase in
 the download time in different scenarios is very important.
 
-![nydus-mirror-dragonfly](../../resource/setup/nydus-mirror-dragonfly.png)
+![nydus-mirror-dragonfly](nydus-mirror-dragonfly.png)
 
 - OCIv1: Use containerd to pull image directly.
 - Nydus Cold Boot: Use containerd to pull image via nydus-snapshotter and doesn't hit any cache.
@@ -446,3 +468,19 @@ Causes the `QPS` of the registry to be relatively high.
 Dragonfly can effectively reduce the number of requests and
 download traffic for back-to-source registry.
 In the best case, `dragonfly` can make the same task back-to-source download only once.
+
+## Links
+
+### Dragonfly community
+
+- Website: [https://d7y.io/](https://d7y.io/)
+- Github Repo: [https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)
+- Slack Channel: [#dragonfly](https://cloud-native.slack.com/messages/dragonfly/) on [CNCF Slack](https://slack.cncf.io/)
+- Discussion Group: <dragonfly-discuss@googlegroups.com>
+- Twitter: [@dragonfly_oss](https://twitter.com/dragonfly_oss)
+
+### Nydus community
+
+- Website: [https://nydus.dev/](https://nydus.dev/)
+- Github Repo: [https://github.com/dragonflyoss/image-service](https://github.com/dragonflyoss/image-service)
+- Slack Channel: [#nydus](https://join.slack.com/t/nydusimageservice/shared_invite/zt-pz4qvl4y-WIh4itPNILGhPS8JqdFm_w)

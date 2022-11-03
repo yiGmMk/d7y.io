@@ -1,32 +1,50 @@
 ---
-id: nydus
-title: Nydus
+title: Dragonfly 和 Nydus Mirror 模式集成实践
+author: Gaius
+author_title: Dragonfly Maintainer
+author_url: https://github.com/gaius-qi
+author_image_url: https://avatars.githubusercontent.com/u/15955374?s=96&v=4
+tags: [dragonfly, container image, OCI, nydus, containerd, cncf]
+description: 介绍 Dragonfly 和 Nydus 如何进行集成，并提高镜像下载速度。
+hide_table_of_contents: false
 ---
 
-This document will help you experience how to use dragonfly with nydus.
+## 简介
 
-## Prerequisites {#prerequisites}
+自 17 年开源以来，[Dragonfly](https://d7y.io/) 被许多大规模互联网公司选用并投入生产使用，
+并在 18 年 10 月正式进入 CNCF，成为中国第三个进入 CNCF 沙箱级别的项目。
+2020 年 4 月，CNCF 技术监督委员会（TOC）投票决定接受 Dragonfly 作为孵化级别的托管项目。
+Dragonfly 多年生产实践经验打磨的下一代产品，它汲取了上一代 Dragonfly1.x 的优点并针对已知问题做了大量的优化。
+
+[Nydus](https://nydus.dev/) 作为 Dragonfly 的子项目优化了 OCIv1 镜像格式，并以此设计了一个镜像文件系统，
+使容器可以按需下载镜像，不再需要下载完整镜像即可启动容器。
+在最新版本中 Dragonfly 完成了和子项目 Nydus 的集成，让容器启动即可以按需下载镜像，减少下载量。
+也可以在传输过程中利用 Dragonfly P2P 的传输方式，降低回源流量并且提升下载速度。
+
+## 实践
+
+### 依赖
 
 <!-- markdownlint-disable -->
 
-| Name               | Version | Document                                                    |
-| ------------------ | ------- | ----------------------------------------------------------- |
-| Kubernetes cluster | 1.20+   | [kubernetes.io](https://kubernetes.io/)                     |
-| Helm               | 3.8.0+  | [helm.sh](https://helm.sh/)                                 |
-| Containerd         | v1.4.3+ | [containerd.io](https://containerd.io/)                     |
-| Nerdctl            | 0.22+   | [containerd/nerdctl](https://github.com/containerd/nerdctl) |
+| 所需软件           | 版本要求 | 文档                                                        |
+| ------------------ | -------- | ----------------------------------------------------------- |
+| Kubernetes cluster | 1.20+    | [kubernetes.io](https://kubernetes.io/)                     |
+| Helm               | 3.8.0+   | [helm.sh](https://helm.sh/)                                 |
+| Containerd         | v1.4.3+  | [containerd.io](https://containerd.io/)                     |
+| Nerdctl            | 0.22+    | [containerd/nerdctl](https://github.com/containerd/nerdctl) |
 
-**Notice:** [Kind](https://kind.sigs.k8s.io/) is recommended if no kubernetes cluster is available for testing.
+**注意:** 如果没有可用的 Kubernetes 集群进行测试，推荐使用 [Kind](https://kind.sigs.k8s.io/)。
 
 <!-- markdownlint-restore -->
 
-## Install dragonfly {#install-dragonfly}
+### 安装 Dragonfly
 
-For detailed installation documentation based on kubernetes cluster, please refer to [quick-start-kubernetes](../../getting-started/quick-start/kubernetes.md).
+基于 Kubernetes cluster 详细安装文档可以参考 [quick-start-kubernetes](https://d7y.io/zh/docs/getting-started/quick-start/kubernetes/)。
 
-## Setup kubernetes cluster {#setup-kubernetes-cluster}
+#### 使用 Kind 安装 Kubernetes 集群
 
-Create kind multi-node cluster configuration file `kind-config.yaml`, configuration content is as follows:
+创建 Kind 多节点集群配置文件 `kind-config.yaml`, 配置如下:
 
 ```yaml
 kind: Cluster
@@ -40,21 +58,21 @@ nodes:
   - role: worker
 ```
 
-Create a kind multi-node cluster using the configuration file:
+使用配置文件创建 Kind 集群:
 
 ```shell
 kind create cluster --config kind-config.yaml
 ```
 
-Switch the context of kubectl to kind cluster:
+切换 Kubectl 的 context 到 Kind 集群:
 
 ```shell
 kubectl config use-context kind-kind
 ```
 
-## Kind loads dragonfly image {#kind-loads-dragonfly-image}
+#### Kind 加载 Dragonfly 镜像
 
-Pull dragonfly latest images:
+下载 Dragonfly latest 镜像:
 
 ```shell
 docker pull dragonflyoss/scheduler:latest
@@ -62,7 +80,7 @@ docker pull dragonflyoss/manager:latest
 docker pull dragonflyoss/dfdaemon:latest
 ```
 
-Kind cluster loads dragonfly latest images:
+Kind 集群加载 Dragonfly latest 镜像:
 
 ```shell
 kind load docker-image dragonflyoss/scheduler:latest
@@ -70,9 +88,9 @@ kind load docker-image dragonflyoss/manager:latest
 kind load docker-image dragonflyoss/dfdaemon:latest
 ```
 
-## Create dragonfly cluster based on helm charts {#create-dragonfly-cluster-based-on-helm-charts}
+#### 基于 Helm Charts 创建 Dragonfly P2P 集群
 
-Create helm charts configuration file `charts-config.yaml` and enable prefetching, configuration content is as follows:
+创建 Helm Charts 配置文件 `charts-config.yaml` 并且开启 Peer 的预取功能, 配置如下:
 
 ```yaml
 scheduler:
@@ -123,7 +141,7 @@ manager:
     pprofPort: 18066
 ```
 
-Create a dragonfly cluster using the configuration file:
+使用配置文件部署 Dragonfly Helm Charts:
 
 <!-- markdownlint-disable -->
 
@@ -154,7 +172,7 @@ NOTES:
 
 <!-- markdownlint-restore -->
 
-Check that dragonfly is deployed successfully:
+检查 Dragonfly 是否部署成功:
 
 ```shell
 $ kubectl get po -n dragonfly-system
@@ -171,7 +189,7 @@ dragonfly-scheduler-0                1/1     Running   0              3m27s
 dragonfly-seed-peer-0                1/1     Running   2 (95s ago)    3m27s
 ```
 
-Create peer service configuration file `peer-service-config.yaml`, configuration content is as follows:
+创建 Peer Service 配置文件 `peer-service-config.yaml` 配置如下:
 
 ```yaml
 apiVersion: v1
@@ -191,21 +209,21 @@ spec:
     release: dragonfly
 ```
 
-Create a peer service using the configuration file:
+使用配置文件部署 Peer Service:
 
 ```shell
 kubectl apply -f peer-service-config.yaml
 ```
 
-## Install nydus for containerd {#install-nydus-for-containerd}
+### Containerd 集成 Nydus
 
-For detailed nydus installation documentation based on containerd environment, please refer to
-[nydus-setup-for-containerd-environment](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#nydus-setup-for-containerd-environment).
-The example uses Systemd to manage the `nydus-snapshotter` service.
+生产环境 Containerd 集成 Nydus 详细文档可以参考
+[nydus-setup-for-containerd-environment](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#nydus-setup-for-containerd-environment)。
+下面例子使用 Systemd 管理 `nydus-snapshotter` 服务。
 
-### Install nydus tools {#install-nydus-tools}
+#### 下载安装 Nydus 工具
 
-Download `containerd-nydus-grpc` binary, please refer to [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
+下载 `containerd-nydus-grpc` 二进制文件, 下载地址为 [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
 ```shell
 NYDUS_SNAPSHOTTER_VERSION=0.3.0
@@ -213,13 +231,13 @@ wget https://github.com/containerd/nydus-snapshotter/releases/download/v$NYDUS_S
 tar zxvf nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 ```
 
-Install `containerd-nydus-grpc` tool:
+安装 `containerd-nydus-grpc` 工具:
 
 ```shell
 sudo cp nydus-snapshotter/containerd-nydus-grpc /usr/local/bin/
 ```
 
-Download `nydus-image`, `nydusd` and `nydusify` binaries, please refer to [dragonflyoss/image-service](https://github.com/dragonflyoss/image-service/releases/latest):
+下载 `nydus-image`、`nydusd` 以及 `nydusify` 二进制文件, 下载地址为 [dragonflyoss/image-service](https://github.com/dragonflyoss/image-service/releases/latest):
 
 ```shell
 NYDUS_VERSION=2.1.0
@@ -227,18 +245,18 @@ wget https://github.com/dragonflyoss/image-service/releases/download/v$NYDUS_VER
 tar zxvf nydus-static-v$NYDUS_VERSION-linux-amd64.tgz
 ```
 
-Install `nydus-image`, `nydusd` and `nydusify` tools:
+安装 `nydus-image`、`nydusd` 以及 `nydusify` 工具:
 
 ```shell
 sudo cp nydus-static/nydus-image nydus-static/nydusd nydus-static/nydusify /usr/local/bin/
 ```
 
-### Install nydus snapshotter plugin for containerd {#install-nydus-snapshotter-plugin-for-containerd}
+#### Containerd 集成 Nydus Snapshotter 插件
 
-Configure containerd to use the `nydus-snapshotter` plugin, please refer to
-[configure-and-start-containerd](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#configure-and-start-containerd).
+配置 Containerd 使用 `nydus-snapshotter` 插件, 详细文档参考
+[configure-and-start-containerd](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#configure-and-start-containerd)。
 
-Change configuration of containerd in `/etc/containerd/config.toml`:
+首先修改 Containerd 配置在 `/etc/containerd/config.toml` 添加下面内容:
 
 ```toml
 [proxy_plugins]
@@ -252,25 +270,25 @@ Change configuration of containerd in `/etc/containerd/config.toml`:
     disable_snapshot_annotations = false
 ```
 
-Restart containerd service:
+重启 Containerd 服务:
 
 ```shell
 sudo systemctl restart containerd
 ```
 
-Check that containerd uses the `nydus-snapshotter` plugin:
+验证 containerd 是否使用 `nydus-snapshotter` 插件:
 
 ```shell
 $ ctr -a /run/containerd/containerd.sock plugin ls | grep nydus
 io.containerd.snapshotter.v1          nydus                    -              ok
 ```
 
-### Systemd starts nydus snapshotter service {#systemd-starts-snapshotter-service}
+#### Systemd 启动 Nydus Snapshotter 服务
 
-For detailed configuration documentation based on nydus mirror mode, please refer to
-[enable-mirrors-for-storage-backend](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusd.md#enable-mirrors-for-storage-backend).
+Nydusd 的 Mirror 模式配置详细文档可以参考
+[enable-mirrors-for-storage-backend](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusd.md#enable-mirrors-for-storage-backend)。
 
-Create nydusd configuration file `nydusd-config.json`, configuration content is as follows:
+创建 Nydusd 配置文件 `nydusd-config.json`, 配置如下:
 
 ```json
 {
@@ -314,13 +332,13 @@ Create nydusd configuration file `nydusd-config.json`, configuration content is 
 }
 ```
 
-Copy configuration file to `/etc/nydus/config.json`:
+复制配置文件至 `/etc/nydus/config.json` 文件:
 
 ```shell
 sudo mkdir /etc/nydus && cp nydusd-config.json /etc/nydus/config.json
 ```
 
-Create systemd configuration file `nydusd-config.json` of nydus snapshotter, configuration content is as follows:
+创建 Nydus Snapshotter Systemd 配置文件 `nydus-snapshotter.service`, 配置如下:
 
 ```text
 [Unit]
@@ -343,13 +361,13 @@ StandardError=journal
 WantedBy=multi-user.target
 ```
 
-Copy configuration file to `/etc/systemd/system/`:
+复制配置文件至 `/etc/systemd/system/` 目录:
 
 ```shell
 sudo cp nydus-snapshotter.service /etc/systemd/system/
 ```
 
-Systemd starts nydus snapshotter service:
+Systemd 启动 Nydus Snapshotter 服务:
 
 <!-- markdownlint-disable -->
 
@@ -374,35 +392,33 @@ Oct 19 08:01:00 kvm-gaius-0 containerd-nydus-grpc[2853636]: time="2022-10-19T08:
 
 <!-- markdownlint-restore -->
 
-### Convert an image to nydus format {#convert-an-image-to-nydus-format}
+#### 转换 Nydus 格式镜像
 
-Convert `python:latest` image to nydus format, you can use
-the converted `dragonflyoss/python-nydus:latest` image and skip this step.
-Conversion tool can use [nydusify](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md) and [acceld](https://github.com/goharbor/acceleration-service).
+转换 `python:latest` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的 `dragonflyoss/python-nydus:latest` 镜像, 跳过该步骤。
+转换工具可以使用 [nydusify](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md) 也可以使用 [acceld](https://github.com/goharbor/acceleration-service)。
 
-Login to Dockerhub:
+登陆 Dockerhub:
 
 ```shell
 docker login
 ```
 
-Convert `python:latest` image to nydus format, and `DOCKERHUB_REPO_NAME` environment variable
-needs to be set to the user's image repository:
+转换 Nydus 镜像, `DOCKERHUB_REPO_NAME` 环境变量设置为用户个人的镜像仓库:
 
 ```shell
 DOCKERHUB_REPO_NAME=dragonflyoss
 sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:latest --target $DOCKERHUB_REPO_NAME/python-nydus:latest
 ```
 
-### Try nydus with nerdctl {#try-nydus-with-nerdctl}
+#### Nerdctl 运行 Nydus 镜像
 
-Running `python-nydus:latest` with nerdctl:
+使用 Nerdctl 运行 `python-nydus:latest`, 过程中即通过 Nydus 和 Dragonfly 下载镜像:
 
 ```shell
 sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python-nydus:latest
 ```
 
-Check that nydus is downloaded via dragonfly based on mirror mode:
+搜索日志验证 Nydus 基于 Mirror 模式通过 Dragonfly 分发流量:
 
 <!-- markdownlint-disable -->
 
@@ -413,36 +429,41 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 
 <!-- markdownlint-restore -->
 
-## Performance testing {#performance-testing}
+## 性能测试
 
-Test the performance of single-machine image download after the integration of
-`nydus mirror` mode and `dragonfly P2P`. The tests were performed on the same machine.
-Due to the influence of the network environment of the machine itself,
-the actual download time is not important, but the ratio of the increase in
-the download time in different scenarios is very important.
+测试 Nydus Mirror 模式与 Dragonfly P2P 集成后的单机镜像下载的性能。测试是在同一台机器上面做不同场景的测试。由于机器本身网络环境、配置等影响，实际下载时间不具有参考价值，但是不同场景下载时间所提升的比率是有重要意义的。
 
-![nydus-mirror-dragonfly](../../resource/setup/nydus-mirror-dragonfly.png)
+![nydus-mirror-dragonfly](nydus-mirror-dragonfly.png)
 
-- OCIv1: Use containerd to pull image directly.
-- Nydus Cold Boot: Use containerd to pull image via nydus-snapshotter and doesn't hit any cache.
-- Nydus & Dragonfly Cold Boot: Use containerd to pull image via nydus-snapshotter.
-  Transfer the traffic to dragonfly P2P based on nydus mirror mode and no cache hits.
-- Hit Dragonfly Remote Peer Cache: Use containerd to pull image via nydus-snapshotter.
-  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the remote peer cache.
-- Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
-  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the local peer cache.
-- Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
-  Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the nydus local cache.
+- OCIv1: 使用 Containerd 直接拉取镜像并且启动成功的数据。
+- Nydus Cold Boot: 使用 Containerd 通过 Nydus 拉取镜像，没有命中任何缓存并且启动成功的数据。
+- Nydus & Dragonfly Cold Boot: 使用 Containerd 通过 Nydus 拉取镜像，并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在没有命中任何缓存并且启动成功的数据。
+- Hit Dragonfly Remote Peer Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Dragonfly 的远端 Peer 缓存的情况下并且成功启动的数据。
+- Hit Dragonfly Local Peer Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Dragonfly 的本地 Peer 缓存的情况下并且成功启动的数据。
+- Hit Nydus Cache: 使用 Containerd 通过 Nydus 拉取镜像，
+  并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Nydus 的本地缓存的情况下并且成功启动的数据。
 
-Test results show `nydus mirror` mode and `dragonfly P2P` integration.
-Use the `nydus` download image to compare the `OCIv1` mode,
-It can effectively reduce the image download time.
-The cold boot of `nydus` and `nydus & dragonfly` are basically close.
-All hits to `dragonfly` cache are better than `nydus` only.
-The most important thing is that if a very large `kubernetes` cluster uses `nydus` to pull images.
-The download of each image layer will be generate as many range requests as needed.
-The `QPS` of the source site of the registry is too high.
-Causes the `QPS` of the registry to be relatively high.
-Dragonfly can effectively reduce the number of requests and
-download traffic for back-to-source registry.
-In the best case, `dragonfly` can make the same task back-to-source download only once.
+测试结果表明 Nydus Mirror 模式和 Dragonfly P2P 集成。使用 Nydus 下载镜像对比 `OCIv1` 的模式，
+能够有效减少镜像下载时间。Nydus 冷启动和 Nydus & Dragonfly 冷启动数据基本接近。
+其他命中 Dragonfly Cache 的结果均好于只使用 Nydus 的情况。最重要的是如果很大规模集群使用 Nydus 拉取镜像，
+会将每个镜像层的下载分解按需产生很多 Range 请求。增加镜像仓库源站 `QPS`。
+而 Dragonfly 可以基于 P2P 技术有效减少回源镜像仓库的请求数量和下载流量。
+最优的情况，Dragonfly 可以保证大规模集群中每个下载任务只回源一次。
+
+## 链接
+
+### Dragonfly 社区
+
+- 官方网站: [https://d7y.io/](https://d7y.io/)
+- Github 仓库: [https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)
+- Slack Channel: [#dragonfly](https://cloud-native.slack.com/messages/dragonfly/) on [CNCF Slack](https://slack.cncf.io/)
+- Discussion Group: <dragonfly-discuss@googlegroups.com>
+- Twitter: [@dragonfly_oss](https://twitter.com/dragonfly_oss)
+
+### Nydus 社区
+
+- 官方网站: [https://nydus.dev/](https://nydus.dev/)
+- Github 仓库: [https://github.com/dragonflyoss/image-service](https://github.com/dragonflyoss/image-service)
+- Slack Channel: [#nydus](https://join.slack.com/t/nydusimageservice/shared_invite/zt-pz4qvl4y-WIh4itPNILGhPS8JqdFm_w)
