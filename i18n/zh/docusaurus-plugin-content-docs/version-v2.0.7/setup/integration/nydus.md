@@ -37,6 +37,8 @@ nodes:
     extraPortMappings:
       - containerPort: 30950
         hostPort: 65001
+      - containerPort: 30951
+        hostPort: 40901
   - role: worker
 ```
 
@@ -185,6 +187,9 @@ spec:
     - name: http
       nodePort: 30950
       port: 65001
+    - name: http
+      nodePort: 30951
+      port: 40901
   selector:
     app: dragonfly
     component: dfdaemon
@@ -284,7 +289,8 @@ Nydusd 的 Mirror 模式配置详细文档可以参考
             "auth_through": false,
             "headers": {
               "X-Dragonfly-Registry": "https://index.docker.io"
-            }
+            },
+            "ping_url": "http://127.0.0.1:40901/server/ping"
           }
         ],
         "scheme": "https",
