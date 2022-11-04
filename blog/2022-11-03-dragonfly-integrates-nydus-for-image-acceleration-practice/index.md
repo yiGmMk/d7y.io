@@ -235,7 +235,7 @@ The example uses Systemd to manage the `nydus-snapshotter` service.
 Download `containerd-nydus-grpc` binary, please refer to [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
 ```shell
-NYDUS_SNAPSHOTTER_VERSION=0.3.0
+NYDUS_SNAPSHOTTER_VERSION=0.3.2
 wget https://github.com/containerd/nydus-snapshotter/releases/download/v$NYDUS_SNAPSHOTTER_VERSION/nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 tar zxvf nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 ```
@@ -249,7 +249,7 @@ sudo cp nydus-snapshotter/containerd-nydus-grpc /usr/local/bin/
 Download `nydus-image`, `nydusd` and `nydusify` binaries, please refer to [dragonflyoss/image-service](https://github.com/dragonflyoss/image-service/releases/latest):
 
 ```shell
-NYDUS_VERSION=2.1.0
+NYDUS_VERSION=2.1.1
 wget https://github.com/dragonflyoss/image-service/releases/download/v$NYDUS_VERSION/nydus-static-v$NYDUS_VERSION-linux-amd64.tgz
 tar zxvf nydus-static-v$NYDUS_VERSION-linux-amd64.tgz
 ```
