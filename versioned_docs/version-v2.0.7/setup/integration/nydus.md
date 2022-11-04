@@ -184,10 +184,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - name: http
+    - name: http-65001
       nodePort: 30950
       port: 65001
-    - name: http
+    - name: http-40901
       nodePort: 30951
       port: 40901
   selector:
