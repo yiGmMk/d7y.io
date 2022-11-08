@@ -382,7 +382,7 @@ Oct 19 08:01:00 kvm-gaius-0 containerd-nydus-grpc[2853636]: time="2022-10-19T08:
 
 ### 转换 Nydus 格式镜像
 
-转换 `python:latest` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的 `dragonflyoss/python-nydus:latest` 镜像, 跳过该步骤。
+转换 `python:3.9.15` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的 `dragonflyoss/python:3.9.15-nydus` 镜像, 跳过该步骤。
 转换工具可以使用 [nydusify](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md) 也可以使用 [acceld](https://github.com/goharbor/acceleration-service)。
 
 登陆 Dockerhub:
@@ -395,15 +395,15 @@ docker login
 
 ```shell
 DOCKERHUB_REPO_NAME=dragonflyoss
-sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:latest --target $DOCKERHUB_REPO_NAME/python-nydus:latest
+sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:3.9.15 --target $DOCKERHUB_REPO_NAME/python:3.9.15-nydus
 ```
 
 ### Nerdctl 运行 Nydus 镜像
 
-使用 Nerdctl 运行 `python-nydus:latest`, 过程中即通过 Nydus 和 Dragonfly 下载镜像:
+使用 Nerdctl 运行 `python:3.9.15-nydus`, 过程中即通过 Nydus 和 Dragonfly 下载镜像:
 
 ```shell
-sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python-nydus:latest
+sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python:3.9.15-nydus
 ```
 
 搜索日志验证 Nydus 基于 Mirror 模式通过 Dragonfly 分发流量:
@@ -419,7 +419,11 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 
 ## 性能测试
 
-测试 Nydus Mirror 模式与 Dragonfly P2P 集成后的单机镜像下载的性能。测试是在同一台机器上面做不同场景的测试。由于机器本身网络环境、配置等影响，实际下载时间不具有参考价值，但是不同场景下载时间所提升的比率是有重要意义的。
+测试 Nydus Mirror 模式与 Dragonfly P2P 集成后的单机镜像下载的性能。
+主要测试不同语言镜像运行版本命令的启动时间，例如 `python` 镜像运行启动命令为 `python -V`。
+测试是在同一台机器上面做不同场景的测试。
+由于机器本身网络环境、配置等影响，实际下载时间不具有参考价值，
+但是不同场景下载时间所提升的比率是有重要意义的。
 
 ![nydus-mirror-dragonfly](../../resource/setup/nydus-mirror-dragonfly.png)
 

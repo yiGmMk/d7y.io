@@ -348,7 +348,7 @@ Copy configuration file to `/etc/nydus/config.json`:
 sudo mkdir /etc/nydus && cp nydusd-config.json /etc/nydus/config.json
 ```
 
-Create systemd configuration file `nydusd-config.json` of nydus snapshotter, configuration content is as follows:
+Create systemd configuration file `nydus-snapshotter.service` of nydus snapshotter, configuration content is as follows:
 
 ```text
 [Unit]
@@ -404,8 +404,8 @@ Oct 19 08:01:00 kvm-gaius-0 containerd-nydus-grpc[2853636]: time="2022-10-19T08:
 
 #### Convert an image to nydus format {#convert-an-image-to-nydus-format}
 
-Convert `python:latest` image to nydus format, you can use
-the converted `dragonflyoss/python-nydus:latest` image and skip this step.
+Convert `python:3.9.15` image to nydus format, you can use
+the converted `dragonflyoss/python:3.9.15-nydus` image and skip this step.
 Conversion tool can use [nydusify](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md) and [acceld](https://github.com/goharbor/acceleration-service).
 
 Login to Dockerhub:
@@ -414,20 +414,20 @@ Login to Dockerhub:
 docker login
 ```
 
-Convert `python:latest` image to nydus format, and `DOCKERHUB_REPO_NAME` environment variable
+Convert `python:3.9.15` image to nydus format, and `DOCKERHUB_REPO_NAME` environment variable
 needs to be set to the user's image repository:
 
 ```shell
 DOCKERHUB_REPO_NAME=dragonflyoss
-sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:latest --target $DOCKERHUB_REPO_NAME/python-nydus:latest
+sudo nydusify convert --nydus-image /usr/local/bin/nydus-image --source python:3.9.15 --target $DOCKERHUB_REPO_NAME/python:3.9.15-nydus
 ```
 
 #### Try nydus with nerdctl {#try-nydus-with-nerdctl}
 
-Running `python-nydus:latest` with nerdctl:
+Running `python:3.9.15-nydus` with nerdctl:
 
 ```shell
-sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python-nydus:latest
+sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python:3.9.15-nydus
 ```
 
 Check that nydus is downloaded via dragonfly based on mirror mode:
@@ -444,7 +444,10 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log
 ## Performance testing {#performance-testing}
 
 Test the performance of single-machine image download after the integration of
-`nydus mirror` mode and `dragonfly P2P`. The tests were performed on the same machine.
+`nydus mirror` mode and `dragonfly P2P`.
+Test running version commands using images in different languages.
+For example, the startup command used to run a `python` image is `python -V`.
+The tests were performed on the same machine.
 Due to the influence of the network environment of the machine itself,
 the actual download time is not important, but the ratio of the increase in
 the download time in different scenarios is very important.
@@ -459,7 +462,7 @@ the download time in different scenarios is very important.
   Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the remote peer cache.
 - Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
   Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the local peer cache.
-- Hit Dragonfly Local Peer Cache: Use containerd to pull image via nydus-snapshotter.
+- Hit Nydus Cache: Use containerd to pull image via nydus-snapshotter.
   Transfer the traffic to dragonfly P2P based on nydus mirror mode and hit the nydus local cache.
 
 Test results show `nydus mirror` mode and `dragonfly P2P` integration.
