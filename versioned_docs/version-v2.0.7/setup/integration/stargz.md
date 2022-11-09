@@ -205,7 +205,7 @@ kubectl apply -f peer-service-config.yaml
 ## Install stargz for containerd {#install-stargz-for-containerd}
 
 For detailed stargz installation documentation based on containerd environment, please refer to
-[stargz-setup-for-containerd-environment](https://github.com/containerd/stargz-snapshotter/blob/v0.12.1/docs/INSTALL.md).
+[stargz-setup-for-containerd-environment](https://github.com/containerd/stargz-snapshotter/blob/main/docs/INSTALL.md).
 The example uses Systemd to manage the `stargz-snapshotter` service.
 
 ### Install stargz tools {#install-stargz-tools}
@@ -213,7 +213,7 @@ The example uses Systemd to manage the `stargz-snapshotter` service.
 Download `containerd-stargz-grpc` binary, please refer to [stargz-snapshotter/releases](https://github.com/containerd/stargz-snapshotter/releases/latest):
 
 ```shell
-STARGZ_SNAPSHOTTER_VERSION=0.12.1
+STARGZ_SNAPSHOTTER_VERSION=0.12.2
 wget https://github.com/containerd/stargz-snapshotter/releases/download/stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz
 tar -C /usr/local/bin -xvf stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz containerd-stargz-grpc ctr-remote
 ```
@@ -221,7 +221,7 @@ tar -C /usr/local/bin -xvf stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux
 ### Install stargz snapshotter plugin for containerd {#install-stargz-snapshotter-plugin-for-containerd}
 
 Configure containerd to use the `stargz-snapshotter` plugin, please refer to
-[configure-and-start-containerd](https://github.com/containerd/stargz-snapshotter/blob/v0.12.1/docs/INSTALL.md#install-stargz-snapshotter-for-containerd-with-systemd).
+[configure-and-start-containerd](https://github.com/containerd/stargz-snapshotter/blob/main/docs/INSTALL.md#install-stargz-snapshotter-for-containerd-with-systemd).
 
 Change configuration of containerd in `/etc/containerd/config.toml`:
 
@@ -251,12 +251,17 @@ io.containerd.snapshotter.v1          stargz                    -              o
 
 ### Systemd starts stargz snapshotter service {#systemd-stargz-snapshotter-service}
 
+For detailed configuration documentation based on stargz mirror mode, please refer to
+[stargz-registry-mirrors](https://github.com/containerd/stargz-snapshotter/blob/main/docs/overview.md#registry-mirrors-and-insecure-connection).
+
 Create stargz configuration file `config.toml`, configuration content is as follows:
 
 ```toml
-[[resolver.host."index.docker.io".mirrors]]
-host = "127.0.0.1:65001"
-insecure = true
+[[resolver.host."docker.io".mirrors]]
+  host = "127.0.0.1:65001"
+  insecure = true
+  [resolver.host."docker.io".mirrors.header]
+    X-Dragonfly-Registry = ["https://index.docker.io"]
 ```
 
 Copy configuration file to `/etc/containerd-stargz-grpc/config.toml`:
@@ -301,6 +306,17 @@ Running `python:3.9.15-esgz` with nerdctl:
 ```shell
 sudo nerdctl --snapshotter stargz run --rm -it $DOCKERHUB_REPO_NAME/python:3.9.15-esgz
 ```
+
+Check that stargz is downloaded via dragonfly based on mirror mode:
+
+<!-- markdownlint-disable -->
+
+```shell
+$ journalctl -u stargz-snapshotter | grep 'prepared remote snapshot'
+containerd-stargz-grpc[641210]: {"key":"default/102/extract-937057799-P18P sha256:3c17c21e4512b29e8cfc1c8621f91e4284ce2dcc5080a348c7ba4f47eaba6f11","level":"debug","msg":"prepared remote snapshot","parent":"sha256:4f9bea3e771997ae09192ddf4bd59c844444c671174835446759a82e457f1aed","remote-snapshot-prepared":"true","time":"2022-11-04T03:53:03.945119325Z"}
+```
+
+<!-- markdownlint-restore -->
 
 ## Performance testing {#performance-testing}
 
