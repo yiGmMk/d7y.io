@@ -1,9 +1,9 @@
 ---
 id: stargz
-title: Stargz
+title: eStargz
 ---
 
-This document will help you experience how to use dragonfly with stargz.
+This document will help you experience how to use dragonfly with eStargz.
 
 ## Prerequisites {#prerequisites}
 
@@ -213,7 +213,7 @@ The example uses Systemd to manage the `stargz-snapshotter` service.
 Download `containerd-stargz-grpc` binary, please refer to [stargz-snapshotter/releases](https://github.com/containerd/stargz-snapshotter/releases/latest):
 
 ```shell
-STARGZ_SNAPSHOTTER_VERSION=0.12.2
+STARGZ_SNAPSHOTTER_VERSION=0.13.0
 wget https://github.com/containerd/stargz-snapshotter/releases/download/stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz
 tar -C /usr/local/bin -xvf stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz containerd-stargz-grpc ctr-remote
 ```

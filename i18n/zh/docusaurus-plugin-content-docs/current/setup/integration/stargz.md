@@ -1,9 +1,9 @@
 ---
 id: stargz
-title: Stargz
+title: eStargz
 ---
 
-本文档将帮助您将 Dragonfly 与 Stargz 一起使用。
+本文档将帮助您将 Dragonfly 与 eStargz 一起使用。
 
 ## 依赖
 
@@ -213,7 +213,7 @@ kubectl apply -f peer-service-config.yaml
 下载 `containerd-stargz-grpc` 二进制文件, 下载地址为 [stargz-snapshotter/releases](https://github.com/containerd/stargz-snapshotter/releases/latest):
 
 ```shell
-STARGZ_SNAPSHOTTER_VERSION=0.12.2
+STARGZ_SNAPSHOTTER_VERSION=0.13.0
 wget https://github.com/containerd/stargz-snapshotter/releases/download/stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz
 tar -C /usr/local/bin -xvf stargz-snapshotter-v$STARGZ_SNAPSHOTTER_VERSION-linux-amd64.tar.gz containerd-stargz-grpc ctr-remote
 ```
