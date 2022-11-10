@@ -342,7 +342,7 @@ It can effectively reduce the image download time.
 The cold boot of `stargz` and `stargz & dragonfly` are basically close.
 The most important thing is that if a very large `kubernetes` cluster uses `stargz` to pull images.
 The download of each image layer will be generate as many range requests as needed.
-The `QPS` of the source site of the registry is too high.
+The `QPS` of the source of the registry is too high.
 Causes the `QPS` of the registry to be relatively high.
 Dragonfly can effectively reduce the number of requests and
 download traffic for back-to-source registry.
