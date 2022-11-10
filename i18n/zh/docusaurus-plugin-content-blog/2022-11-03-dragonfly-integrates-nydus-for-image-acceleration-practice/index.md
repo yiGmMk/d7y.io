@@ -231,7 +231,7 @@ kubectl apply -f peer-service-config.yaml
 下载 `containerd-nydus-grpc` 二进制文件, 下载地址为 [nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases/latest):
 
 ```shell
-NYDUS_SNAPSHOTTER_VERSION=0.3.2
+NYDUS_SNAPSHOTTER_VERSION=0.3.3
 wget https://github.com/containerd/nydus-snapshotter/releases/download/v$NYDUS_SNAPSHOTTER_VERSION/nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 tar zxvf nydus-snapshotter-v$NYDUS_SNAPSHOTTER_VERSION-x86_64.tgz
 ```
