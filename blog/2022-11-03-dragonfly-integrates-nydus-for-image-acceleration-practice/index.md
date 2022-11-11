@@ -265,6 +265,10 @@ sudo cp nydus-static/nydus-image nydus-static/nydusd nydus-static/nydusify /usr/
 Configure containerd to use the `nydus-snapshotter` plugin, please refer to
 [configure-and-start-containerd](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#configure-and-start-containerd).
 
+`127.0.0.1:65001` is the proxy address of dragonfly peer,
+and the `X-Dragonfly-Registry` header is the address of origin registry,
+which is provided for dragonfly to download the images.
+
 Change configuration of containerd in `/etc/containerd/config.toml`:
 
 ```toml

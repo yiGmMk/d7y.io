@@ -254,6 +254,9 @@ io.containerd.snapshotter.v1          stargz                    -              o
 Stargz 的 Mirror 模式配置详细文档可以参考
 [stargz-registry-mirrors](https://github.com/containerd/stargz-snapshotter/blob/main/docs/overview.md#registry-mirrors-and-insecure-connection).
 
+`127.0.0.1:65001` 是 Dragonfly Peer 的 Proxy 地址，
+`X-Dragonfly-Registry` 自定义 Header 是提供给 Dragonfly 回源的源站仓库地址。
+
 创建 Stargz 配置文件 `config.toml`, 配置如下:
 
 ```toml

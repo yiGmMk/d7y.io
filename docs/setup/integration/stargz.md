@@ -254,6 +254,10 @@ io.containerd.snapshotter.v1          stargz                    -              o
 For detailed configuration documentation based on stargz mirror mode, please refer to
 [stargz-registry-mirrors](https://github.com/containerd/stargz-snapshotter/blob/main/docs/overview.md#registry-mirrors-and-insecure-connection).
 
+`127.0.0.1:65001` is the proxy address of dragonfly peer,
+and the `X-Dragonfly-Registry` header is the address of origin registry,
+which is provided for dragonfly to download the images.
+
 Create stargz configuration file `config.toml`, configuration content is as follows:
 
 ```toml

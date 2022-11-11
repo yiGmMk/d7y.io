@@ -261,6 +261,9 @@ sudo cp nydus-static/nydus-image nydus-static/nydusd nydus-static/nydusify /usr/
 配置 Containerd 使用 `nydus-snapshotter` 插件, 详细文档参考
 [configure-and-start-containerd](https://github.com/dragonflyoss/image-service/blob/master/docs/containerd-env-setup.md#configure-and-start-containerd)。
 
+`127.0.0.1:65001` 是 Dragonfly Peer 的 Proxy 地址，
+`X-Dragonfly-Registry` 自定义 Header 是提供给 Dragonfly 回源的源站仓库地址。
+
 首先修改 Containerd 配置在 `/etc/containerd/config.toml` 添加下面内容:
 
 ```toml

@@ -275,6 +275,10 @@ io.containerd.snapshotter.v1          nydus                    -              ok
 For detailed configuration documentation based on nydus mirror mode, please refer to
 [enable-mirrors-for-storage-backend](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusd.md#enable-mirrors-for-storage-backend).
 
+`127.0.0.1:65001` is the proxy address of dragonfly peer,
+and the `X-Dragonfly-Registry` header is the address of origin registry,
+which is provided for dragonfly to download the images.
+
 Create nydusd configuration file `nydusd-config.json`, configuration content is as follows:
 
 ```json
