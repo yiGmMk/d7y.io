@@ -103,11 +103,11 @@ job:
   # 启动 job 服务。
   enable: true
   # Global 通道 worker 数量。
-  globalWorkerNum: 1
+  globalWorkerNum: 500
   # Scheduler 通道 worker 数量。
-  schedulerWorkerNum: 1
+  schedulerWorkerNum: 500
   # Local 通道 worker 数量。
-  localWorkerNum: 5
+  localWorkerNum: 1000
   # Redis 配置。
   redis:
     # 服务地址。

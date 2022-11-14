@@ -109,11 +109,11 @@ job:
   # Scheduler enable job service.
   enable: true
   # Number of workers in global queue.
-  globalWorkerNum: 1
+  globalWorkerNum: 500
   # Number of workers in scheduler queue.
-  schedulerWorkerNum: 1
+  schedulerWorkerNum: 500
   # Number of workers in local queue.
-  localWorkerNum: 5
+  localWorkerNum: 1000
   # Redis configuration.
   redis:
     # Redis addresses.
