@@ -388,4 +388,10 @@ security:
 network:
   # Enable ipv6.
   enableIPv6: false
+
+# Announcer will provide the scheduler with peer information for scheduling.
+# Peer information includes cpu, memory, etc.
+announcer:
+  # schedulerInterval is the interval of announcing scheduler.
+  schedulerInterval: 30s
 ```

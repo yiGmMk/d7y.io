@@ -226,7 +226,7 @@ objectStorage:
     # 监听端口。
     port: 65004
 
-# Peer task 存储选项。
+# 任务存储选项。
 storage:
   # Task data 过期时间。
   # 超过指定时间没有访问之后，缓存数据将会被清理。
@@ -378,4 +378,10 @@ security:
 network:
   # 开启 IPv6。
   enableIPv6: false
+
+# 广播服务选项，它会将当前 Peer 的主机信息，包括 CPU、Memory 等提供给调度器，
+# 当调度的时候会根据这些主机信息进行节点调度。
+announcer:
+  # schedulerInterval 是广播间隔时长。
+  schedulerInterval: 30s
 ```
