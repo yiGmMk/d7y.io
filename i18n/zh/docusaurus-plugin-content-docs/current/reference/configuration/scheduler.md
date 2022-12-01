@@ -57,9 +57,11 @@ scheduler:
   retryInterval: 50ms
   # 数据回收策略。
   gc:
+    # 单个 Piece 下载超时时间。
+    pieceDownloadTimeout: 30m
     # Peer 的回收间隔。
     peerGCInterval: 10s
-    # 不活跃的 peer 的存活时间。
+    # 不活跃的 Peer 的存活时间。
     peerTTL: 24h
     # Task 的回收间隔。
     taskGCInterval: 30m
