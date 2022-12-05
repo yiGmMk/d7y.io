@@ -199,12 +199,10 @@ export default function Home() {
     { imgURL: 'img/partners/ant-group.svg', alt: 'ant-group' },
     { imgURL: 'img/partners/alibaba-group.svg', alt: 'alibaba-group' },
     { imgURL: 'img/partners/intel.svg', alt: 'intel' },
-    { imgURL: 'img/partners/baidu.svg', alt: 'baidu' },
     { imgURL: 'img/partners/douyin.png', alt: 'douyin' },
-    { imgURL: 'img/partners/didi.svg', alt: 'didi' },
-    { imgURL: 'img/partners/meituan.svg', alt: 'meituan' },
-    { imgURL: 'img/partners/xiaomi.svg', alt: 'xiaomi' },
     { imgURL: 'img/partners/kuaishou.svg', alt: 'kuaishou' },
+    { imgURL: 'img/partners/baidu.svg', alt: 'baidu' },
+    { imgURL: 'img/partners/didi.svg', alt: 'didi' },
   ];
   const DevelopmentInfoList = [
     {
