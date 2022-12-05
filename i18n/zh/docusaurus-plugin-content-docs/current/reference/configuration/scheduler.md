@@ -48,9 +48,9 @@ scheduler:
   # 并且在 dragonfly 工作目录 plugins 中添加编译好的 `d7y-scheduler-plugin-evaluator.so` 文件。
   algorithm: default
   # 单个任务允许客户端回源的数量。
-  backSourceCount: 3
+  backToSourceCount: 3
   # 调度回源重试次数限制。
-  retryBackSourceLimit: 5
+  retryBackToSourceLimit: 5
   # 调度重试次数限制。
   retryLimit: 10
   # 调度重试时间间隔。
