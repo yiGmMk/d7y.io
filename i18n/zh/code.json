@@ -551,5 +551,8 @@
   },
   "In addition to the speed limit for the task like many other download tools, you can also limit the speed and adjust the load limit for the peer level.": {
     "message": "除了像许多其他下载工具针对当前下载任务的限速之外，还可以针对整个节点级别进行限速、调整负载等。"
+  },
+  "CNCF SandBox": {
+    "message": "CNCF SandBox"
   }
 }

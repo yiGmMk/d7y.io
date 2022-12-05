@@ -31,7 +31,7 @@ const config = {
       'classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./sidebars/docs.js'),
           editUrl: function ({ locale, docPath }) {
             return `https://github.com/dragonflyoss/d7y.io/edit/main/docs/${docPath}`;
           },
@@ -92,7 +92,12 @@ const config = {
           label: 'Blog',
           position: 'left',
         },
-       
+        {
+          to: 'videos/sessions/en/2022-11-12',
+          activeBasePath: 'videos',
+          label: 'Videos',
+          position: 'left',
+        },
         {
           label: 'Community',
           position: 'left',
@@ -111,7 +116,7 @@ const config = {
           type: 'localeDropdown',
           position: 'right',
         },
-       
+
         {
           href: 'https://github.com/dragonflyoss/Dragonfly2',
           className: 'header-github-link',
@@ -201,6 +206,20 @@ const config = {
       theme: codeTheme,
     },
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'videos',
+        path: 'videos',
+        routeBasePath: 'videos',
+        include: ['**/*.md'],
+        sidebarPath: require.resolve('./sidebars/videos.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+      },
+    ],
+  ],
 };
 
 module.exports = config;

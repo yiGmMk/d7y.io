@@ -7,7 +7,7 @@ It's built by [Docusaurus 2](https://v2.docusaurus.io/), a modern static website
 ## Add or Update Docs
 
 When you add or modify the docs,
-these five files(`docs/`, `docs/resource/`, and `sidebars.js`) should be taken into consideration.
+these five files(`docs/`, `docs/resource/`, and `sidebars/docs.js`) should be taken into consideration.
 
 1. Create a markdown file in the directory `docs/`. All markdown files need to follow the format,
    that the title at the beginning should be in the following format:
@@ -25,7 +25,7 @@ these five files(`docs/`, `docs/resource/`, and `sidebars.js`) should be taken i
    ![alt](./resources/example.png)
    ```
 
-3. `sidebars.js`, this file contain the navigation information.
+3. `sidebars/docs.js`, this file contain the navigation information.
    Please read [the official docs of docusaurus](https://docusaurus.io/docs/sidebar) to learn how to write `sidebar.js`.
 
    ```js
