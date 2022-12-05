@@ -9,6 +9,16 @@
   src: url('/static/font/DIN.ttf');
 }
 
+@font-face {
+  font-family: 'HFPopin';
+  src: url('/static/font/HFPopin.ttf');
+}
+
+@font-face {
+  font-family: 'HFMidoRound';
+  src: url('/static/font/HFMidoRound.ttf');
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-font-family-base: 'Din';
@@ -22,7 +32,13 @@
   --ifm-code-font-size: 95%;
   --hero-border-color: rgba(0, 0, 0, 0.1);
   --hero-subtitle-font-color: rgba(0, 0, 0, 0.6);
-  --hero-card-color: #fff;
+  --hero-header-shew-color: #dcf9c8;
+  --hero-description-font-color: rgba(0, 0, 0);
+  --hero-mian-skew-color: #ffffff;
+  --hero-user-color: #e5fbd6;
+  --hero-white-color: #ffffff;
+  --hero-card-content-color: #000;
+  --ifm-color-higlight: #ff5722;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -36,7 +52,11 @@ html[data-theme='dark'] {
   --ifm-color-primary-lightest: #4fddbf;
   --hero-border-color: rgba(255, 255, 255, 0.1);
   --hero-subtitle-font-color: #fff;
-  --hero-card-color: rgba(0, 0, 0, 0.6);
+}
+
+.header-github-link:hover.navbar__item::after {
+  content: '';
+  width: 0;
 }
 
 .header-github-link:hover {
@@ -82,6 +102,52 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   position: absolute;
   width: 100px;
 }
+
 .dingtalk:hover .dingtalk-img {
   display: block;
+}
+
+.navbar {
+  padding: 0.5rem 8rem;
+  height: 4.7rem;
+  box-shadow: 0 5px 8px -7px rgb(0 0 0 / 50%);
+}
+
+@media screen and (max-width: 1440px) {
+  .navbar {
+    padding: 0.5rem 3rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .navbar__item {
+    font-size: 0.9rem !important;
+  }
+}
+
+.navbar__title {
+  font-family: HFPopin;
+  font-size: 1.3rem;
+}
+
+.navbar__item {
+  font-family: HFMidoRound;
+  font-size: 1.1rem;
+  font-weight: 900;
+  position: relative;
+}
+
+.navbar__item::after {
+  content: '';
+  width: 0;
+  height: 0.1rem;
+  background: #239b56;
+  position: absolute;
+  top: 98%;
+  left: 50%;
+  transition: all 0.5s;
+}
+
+.navbar__item:hover::after {
+  left: 15%;
+  width: 68%;
 }

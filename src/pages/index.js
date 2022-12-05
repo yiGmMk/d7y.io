@@ -7,269 +7,509 @@ import Translate, { translate } from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import GitHubButton from 'react-github-btn';
-import YouTube from 'react-youtube';
+import BackgroundAnimate from './components/BackgroundAnimate';
+import LottieCardBackground from './components/CardBackground';
+import LottieContact from './components/Contact';
+import LottieDistribution from './components/P2PFileDistribution';
+import LottieIsolate from './components/IsolateAbnormalPeers';
+import LottieNoninvasive from './components/Noninvasive';
+import LottieConsistency from './components/Consistency';
+import LottieEcosystem from './components/Ecosystem';
+import LottieHostlevel from './components/PeerLevelControl';
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const videoOpts = {
-    height: '390',
-    width: '640',
-  };
+  const UserList = [
+    {
+      imgURL: 'img/user/alibaba-group.svg',
+      alt: 'alibaba-group',
+      herf: 'https://www.alibabagroup.com/',
+      name: ' Alibaba Group',
+    },
+    {
+      imgURL: 'img/user/alibaba-cloud.png',
+      alt: 'alibaba-cloud',
+      herf: 'https://us.alibabacloud.com/',
+      name: 'Alibaba Cloud',
+    },
+    {
+      imgURL: 'img/user/ant-group.png',
+      alt: 'ant-group',
+      herf: 'https://www.antgroup.com/',
+      name: ' Ant Group',
+    },
+    {
+      imgURL: 'img/user/amap.png',
+      alt: 'amap',
+      herf: 'https://mobile.amap.com/',
+      name: 'Amap ',
+    },
+    {
+      imgURL: 'img/user/baidu.svg',
+      alt: 'baidu',
+      herf: 'https://baidu.com/',
+      name: 'Bai du',
+    },
+    {
+      imgURL: 'img/user/bilibili.svg',
+      alt: 'bilibili',
+      herf: 'https://www.bilibili.com.cn/',
+      name: 'Bilibili',
+    },
+    {
+      imgURL: 'img/user/cainiao.svg',
+      alt: 'cainiao',
+      herf: 'https://global.cainiao.com/',
+      name: 'Cai Niao',
+    },
+    {
+      imgURL: 'img/user/china-mobile.svg',
+      alt: 'china-mobile',
+      herf: 'http://www.zj.chinamobile.com',
+      name: ' China Mobile',
+    },
+    {
+      imgURL: 'img/user/china-unicom.svg',
+      alt: 'china-unicom',
+      herf: 'http://www.chinaunicom.com/',
+      name: ' China Unicom',
+    },
+    {
+      imgURL: 'img/user/cloudwise.jpg',
+      alt: 'cloud wise',
+      herf: 'https://www.cloudwise.cool/',
+      name: ' Cloud wise',
+    },
+    {
+      imgURL: 'img/user/daocloud.png',
+      alt: 'dao cloud',
+      herf: 'https://www.daocloud.io/',
+      name: 'Dao Cloud',
+    },
+    {
+      imgURL: 'img/user/didi.png',
+      alt: 'didi',
+      herf: 'https://www.didiglobal.com/',
+      name: ' DiDi',
+    },
+    {
+      imgURL: 'img/user/douyin.png',
+      alt: 'douyin',
+      herf: 'https://www.douyin.com/',
+      name: 'Douyin Group',
+    },
+    {
+      imgURL: 'img/user/ele.png',
+      alt: 'ele',
+      herf: 'https://www.ele.me/',
+      name: 'Eleme',
+    },
+    {
+      imgURL: 'img/user/huawei.svg',
+      alt: 'huawei',
+      herf: 'https://www.huawei.com/cn/',
+      name: 'Hua wei',
+    },
+    {
+      imgURL: 'img/user/huya.png',
+      alt: 'huya',
+      herf: 'https://www.huya.com/',
+      name: ' Hu ya',
+    },
+    {
+      imgURL: 'img/user/intel.svg',
+      alt: 'intel',
+      herf: 'https://www.intel.cn/',
+      name: 'Intel',
+    },
+    {
+      imgURL: 'img/user/jd.png',
+      alt: 'jd',
+      herf: 'https://corporate.jd.com/',
+      name: ' JD',
+    },
+    {
+      imgURL: 'img/user/jfrog.svg',
+      alt: 'jfrog',
+      herf: 'https://jfrog.com/',
+      name: ' JFrog',
+    },
+    {
+      imgURL: 'img/user/kuaishou.svg',
+      alt: 'kuaishou',
+      herf: 'https://kuaishou.com/',
+      name: ' Kuai shou',
+    },
+    {
+      imgURL: 'img/user/lazada.svg',
+      alt: 'lazada',
+      herf: 'https://www.lazada.com/',
+      name: ' Lazada',
+    },
+    {
+      imgURL: 'img/user/meituan.svg',
+      alt: 'mei tuan',
+      herf: 'https://about.meituan.com/',
+      name: ' Mei tuan',
+    },
+    {
+      imgURL: 'img/user/neteasegames.jpeg',
+      alt: 'netease games',
+      herf: 'https://www.neteasegames.com/',
+      name: ' Net Ease',
+    },
+    {
+      imgURL: 'img/user/qunar.svg',
+      alt: 'qunar',
+      herf: 'https://www.qunar.com/',
+      name: ' Qunar',
+    },
+    {
+      imgURL: 'img/user/shopee.svg',
+      alt: 'shopee',
+      herf: 'https://shopee.com/',
+      name: ' Shopee',
+    },
+    {
+      imgURL: 'img/user/vivo.svg',
+      alt: 'vivo',
+      herf: 'https://www.vivo.com/',
+      name: ' Vivo',
+    },
+    {
+      imgURL: 'img/user/xiaomi.png',
+      alt: 'xiaomi',
+      herf: 'https://www.mi.com/global/',
+      name: 'Xiao mi',
+    },
+    {
+      imgURL: 'img/user/xperi.svg',
+      alt: 'xperi',
+      herf: 'https://xperi.com/',
+      name: ' Xperi',
+    },
+    {
+      imgURL: 'img/user/yahoo.svg',
+      alt: 'yahoo',
+      herf: 'https://www.yahoo.com/',
+      name: ' Yahoo',
+    },
+  ];
+  const PartnersList = [
+    { imgURL: 'img/partners/ant-group.svg', alt: 'ant-group' },
+    { imgURL: 'img/partners/alibaba-group.svg', alt: 'alibaba-group' },
+    { imgURL: 'img/partners/intel.svg', alt: 'intel' },
+    { imgURL: 'img/partners/baidu.svg', alt: 'baidu' },
+    { imgURL: 'img/partners/douyin.png', alt: 'douyin' },
+    { imgURL: 'img/partners/didi.svg', alt: 'didi' },
+    { imgURL: 'img/partners/meituan.svg', alt: 'meituan' },
+    { imgURL: 'img/partners/xiaomi.svg', alt: 'xiaomi' },
+    { imgURL: 'img/partners/kuaishou.svg', alt: 'kuaishou' },
+  ];
+  const DevelopmentInfoList = [
+    {
+      cardTitle: <Translate> Dragonfly 1.x</Translate>,
+      cardContent: (
+        <Translate>
+          In November 2017,the Dragonfly 1.x project was open sourced,and was selected and put into production use by
+          many internet companies.
+        </Translate>
+      ),
+    },
+    {
+      cardTitle: <Translate> CNCF SandBox</Translate>,
+      cardContent: (
+        <Translate>
+          In October 2018,it entered the CNCF Sandbox, becoming the third project in China to enter the CNCF Sandbox.
+        </Translate>
+      ),
+    },
+    {
+      cardTitle: <Translate> CNCF Incubating</Translate>,
+      cardContent: (
+        <Translate>
+          In April 2020,the CNCF TOC voted to accept Dragonfly as an official entry into CNCF Incubating.
+        </Translate>
+      ),
+    },
+    {
+      cardTitle: <Translate> Dragonfly 2</Translate>,
+      cardContent: (
+        <Translate>
+          In April 2021, taking the advantages of Dragonfly 1 .x and making a lot of optimizations for known issues.
+          Dragonfly 2 is open source.
+        </Translate>
+      ),
+    },
+  ];
+  const FeaturesList = [
+    {
+      cardAnimationComp: <LottieDistribution />,
+      cardTitle: <Translate>P2P File Distribution</Translate>,
+      cardContent: (
+        <Translate>
+          Use P2P technology for file transfer, improve download efficiency, and save bandwidth across IDC.
+        </Translate>
+      ),
+    },
+    {
+      cardAnimationComp: <LottieNoninvasive />,
+      cardTitle: <Translate>Noninvasive</Translate>,
+      cardContent: <Translate>Supports multiple containers for distributing images.</Translate>,
+    },
+    {
+      cardAnimationComp: <LottieIsolate />,
+      cardTitle: <Translate>Isolate Abnormal Peers</Translate>,
+      cardContent: <Translate>Automatically isolate abnormal peers to improve download stability.</Translate>,
+    },
+  ];
 
   return (
     <Layout>
-      <header className={clsx('hero', styles.heroBanner)}>
-        <div className="container">
-          <div className={styles.heroLogoWrapper}>
-            <img className={styles.heroLogo} src={useBaseUrl('img/logo.png')} alt="Dragonfly Logo" />
+      <header className={clsx('hero', styles.heroHeader)}>
+        <div className={styles.headerSkew}></div>
+        <BackgroundAnimate />
+        <div className={styles.headerWrapper}>
+          <div className={styles.headerContainer}>
+            <div className={styles.containerInfo}>
+              <div className="hero_text">
+                <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+                <div className={styles.tagline}>
+                  <p className={clsx('hero__subtitle', styles.description)}>
+                    <Translate>Provide</Translate>
+                    <span className={styles.highlight}>
+                      <Translate>efficient, stable, secure, low-cost</Translate>
+                    </span>
+                    <Translate>
+                      file and image distribution services to be the best practice and standard solution in cloud native
+                      architectures. It is hosted by the Cloud Native Computing Foundation
+                    </Translate>
+                    <span className={styles.highlight}>
+                      <Translate> (CNCF) </Translate>
+                    </span>
+                    <Translate>as an Incubating Level Project.</Translate>
+                  </p>
+                </div>
+              </div>
+              <div className={clsx('row', styles.badgeWrapper)}>
+                <GitHubButton
+                  href="https://github.com/dragonflyoss/Dragonfly2"
+                  data-icon="octicon-star"
+                  data-show-count="true"
+                  aria-label="Star dragonflyoss/Dragonfly2 on GitHub"
+                >
+                  Star
+                </GitHubButton>
+                <GitHubButton
+                  href="https://github.com/dragonflyoss/Dragonfly2/subscription"
+                  data-icon="octicon-eye"
+                  data-show-count="true"
+                  aria-label="Watch dragonflyoss/Dragonfly2 on GitHub"
+                >
+                  Watch
+                </GitHubButton>
+                <GitHubButton
+                  href="https://github.com/dragonflyoss/Dragonfly2/fork"
+                  data-icon="octicon-repo-forked"
+                  data-show-count="true"
+                  aria-label="Fork dragonflyoss/Dragonfly2 on GitHub"
+                >
+                  Fork
+                </GitHubButton>
+              </div>
+              <div className={clsx('row', styles.badgeWrapper)}>
+                <a href="https://github.com/dragonflyoss/Dragonfly2/releases/">
+                  <img src="https://img.shields.io/github/release/dragonflyoss/Dragonfly2.svg" />
+                </a>
+                <a href="https://www.cncf.io/projects/">
+                  <img src="https://img.shields.io/badge/CNCF%20Status-Incubating-informational" />
+                </a>
+              </div>
+            </div>
+            <div className={styles.heroLogowrapper}>
+              <img className={styles.heroLogo} src={useBaseUrl('img/logo.png')} alt="Dragonfly Logo" />
+            </div>
           </div>
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <GitHubButton
-            href="https://github.com/dragonflyoss/Dragonfly2"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star dragonflyoss/Dragonfly2 on GitHub"
-          >
-            Star
-          </GitHubButton>
-          <p className={styles.tagline}>{siteConfig.tagline}</p>
-        </div>
-        <div className={styles.buttonWrapper}>
-          <Button href={useBaseUrl('docs/')}>
-            <Translate>Get Started</Translate>
-          </Button>
-          <Button href={useBaseUrl('docs/concepts/terminology/architecture')}>
-            <Translate>Learn More</Translate>
-          </Button>
+          <div className={styles.partners}>
+            <p className={styles.partnersTitle}>
+              <Translate>Partners</Translate>
+            </p>
+            <div className={styles.partnersWrapper}>
+              {PartnersList.map((img, index) => {
+                return <img className={styles.companyLogo} key={index} src={useBaseUrl(img.imgURL)} alt={img.alt} />;
+              })}
+            </div>
+          </div>
         </div>
       </header>
-
-      <BasicInfo />
-
-      <main className={clsx('hero', styles.hero)}>
-        <div className="container">
-          <div className="row">
-            <h1 className={styles.featureTitle}>
-              <Translate>Why Dragonfly</Translate>
-            </h1>
-          </div>
-          <div className={clsx('row', styles.introSubtitleWrapper)}>
-            <p className={styles.featureSubtitle}>
-              <Translate>
-                Originally it was born to solve distribution at large scales, such as file distribution, log
-                distribution, image distribution, etc. It solves the following problems:
-              </Translate>
-            </p>
-          </div>
-          <div className={clsx('row', styles.cardWrapper)}>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/transfer.svg')} alt="transfer" />
-                <Translate>P2P File Distribution</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <Translate>
-                  Use P2P technology for file transfer, improve download efficiency, and save bandwidth across IDC.
-                </Translate>
-              </p>
-            </div>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/support.svg')} alt="support" />
-                <Translate>Noninvasive</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <Translate>Supports multiple containers for distributing images.</Translate>
-              </p>
-            </div>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/traffic.svg')} alt="traffic" />
-                <Translate>Host-level speed limit</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <Translate>Support for host-level limits speed.</Translate>
-              </p>
-            </div>
-          </div>
-          <div className={clsx('row', styles.cardWrapper)}>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/cdn.svg')} alt="cdn" />
-                <Translate>Consistency</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <Translate>Make sure all downloaded files are consistent.</Translate>
-              </p>
-            </div>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/pressure.svg')} alt="pressure" />
-                <Translate>Isolate abnormal peers</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <Translate>Automatically isolate abnormal peers to improve download stability.</Translate>
-              </p>
-            </div>
-            <div className={styles.card}>
-              <p className={styles.cardTitle}>
-                <img className={styles.icon} src={useBaseUrl('img/icon/flexible.svg')} alt="flexible" />
-                <Translate>Ecosystem</Translate>
-              </p>
-              <p className={styles.cardSubtitle}>
-                <a href="https://goharbor.io/">Harbor</a>{' '}
-                <Translate>
-                  can distribute and preheat images based on the Dragonfly. Image acceleration based on
-                </Translate>{' '}
-                <a href="https://nydus.dev/">Nydus</a>{' '}
-                <Translate>container runtime can use Dragonfly for data distribution.</Translate>
-              </p>
-            </div>
-          </div>
-
-          <div className={clsx('row', styles.introWrapper)}>
+      <main className={clsx('row', styles.main)}>
+        <div className={styles.mainSkew}></div>
+        <div className={styles.mainWrapper}>
+          <div className={styles.features}>
             <div className="row">
-              <h1 className={styles.title}>
-                <Translate>Intro To Dragonfly</Translate>
+              <div className={styles.featuresTitleBox}>
+                <h1 className={styles.mainModuleTitle}>
+                  <span className={styles.titleLine}></span>
+                  <Translate>Dragonfly</Translate>
+                  <span className={styles.featuresTitleHighling}>
+                    <Translate>Features</Translate>
+                  </span>
+                </h1>
+              </div>
+            </div>
+            <div className={styles.buttonWrapper}>
+              <Button href={useBaseUrl('docs/#features')}>
+                <img
+                  className={styles.viewFeaturesIcon}
+                  src={useBaseUrl('img/icon/view-feature.svg')}
+                  alt="button logo"
+                />
+                <Translate>View Features</Translate>
+              </Button>
+            </div>
+            <div className={clsx('row')}>
+              <p className={styles.mainModuleSubtitle}>
+                <Translate>Dragonfly contains many features as a image and file distribution system.</Translate>
+              </p>
+            </div>
+            <div className={clsx('row', styles.featuresCardWrapper)}>
+              {FeaturesList.map((item, index) => {
+                return (
+                  <div className={styles.featuresCardInfo} key={index}>
+                    {item.cardAnimationComp}
+                    <p className={styles.featuresCardTitle}>{item.cardTitle}</p>
+                    <p className={styles.featuresCardContent}>{item.cardContent}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className={clsx('row', styles.featuresCardWrapper)}>
+              <div className={styles.featuresCardInfo}>
+                <LottieConsistency />
+                <p className={styles.featuresCardTitle}>
+                  <Translate>Consistency</Translate>
+                </p>
+                <p className={styles.featuresCardContent}>
+                  <Translate>
+                    It can ensure that the same file is consistent in peer transmission, even if the user does not
+                    perform final consistency check.
+                  </Translate>
+                </p>
+              </div>
+
+              <div className={styles.featuresCardInfo}>
+                <LottieEcosystem />
+                <p className={styles.featuresCardTitle}>
+                  <Translate>Ecosystem</Translate>
+                </p>
+                <p className={styles.featuresCardContent}>
+                  <a href="https://goharbor.io/" className={styles.textLink}>
+                    Harbor
+                  </a>
+                  <Translate>
+                    can distribute and preheat images based on the Dragonfly. if image acceleration based on
+                  </Translate>
+                  <a href="https://nydus.dev/" className={styles.textLink}>
+                    Nydus
+                  </a>
+                  <Translate>or</Translate>
+                  <a href=" https://github.com/containerd/stargz-snapshotter" className={styles.textLink}>
+                    eStargz
+                  </a>
+                  <Translate>, Dragonfly can be used to distribute data.</Translate>
+                </p>
+              </div>
+              <div className={styles.featuresCardInfo}>
+                <LottieHostlevel />
+                <p className={styles.featuresCardTitle}>
+                  <Translate>Peer Level Control</Translate>
+                </p>
+                <p className={styles.featuresCardContent}>
+                  <Translate>
+                    In addition to the speed limit for the task like many other download tools, you can also limit the
+                    speed and adjust the load limit for the peer level.
+                  </Translate>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={styles.development}>
+            <div className="row">
+              <h1 className={styles.mainModuleTitle}>
+                <span className={styles.titleLine}></span>
+                <span className={styles.featuresTitleHighling}>
+                  {' '}
+                  <Translate>Milestones</Translate>{' '}
+                </span>
               </h1>
             </div>
-            <div className={clsx('row', styles.introSubtitleWrapper)}>
-              <p className={styles.subtitle}>
-                <Translate>
-                  Want to learn more about how dragonfly works ? Watch this video to explain the new evolution of
-                  dragonfly. The content will also cover how to deploy dragonfly and practice examples.
-                </Translate>
+            <div className={styles.buttonWrapper}>
+              <Button href={useBaseUrl('docs/#evolution')}>
+                🚀 <Translate> Learn More</Translate>
+              </Button>
+            </div>
+            <div className={clsx('row')}>
+              <p className={styles.mainModuleSubtitle}>
+                <Translate>So far, dragonflies have experienced the following stages of development.</Translate>
               </p>
             </div>
-            <div className={clsx('row', styles.introVideoWrapper)}>
-              <YouTube videoId="YJUZKUtqSFg" opts={videoOpts} />
-              <YouTube videoId="ul2e-srHRr4" opts={videoOpts} />
-            </div>
-          </div>
-
-          <div className={clsx('row', styles.userWrapper)}>
-            <div className="row">
-              <h1 className={styles.title}>
-                <Translate>Who Is Using Dragonfly</Translate>
-              </h1>
-            </div>
-            <div className={clsx('row', styles.userImageWrapper)}>
-              <img className={styles.userImage} src={useBaseUrl('img/user/alibaba-group.svg')} alt="alibaba-group" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/alibaba-cloud.png')} alt="alibaba-cloud" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/ant-group.png')} alt="ant-group" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/amap.png')} alt="amap" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/yahoo.svg')} alt="yahoo" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/vivo.svg')} alt="vivo" />
-            </div>
-            <div className={clsx('row', styles.userImageWrapper)}>
-              <img className={styles.userImage} src={useBaseUrl('img/user/lazada.svg')} alt="lazada" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/meituan.svg')} alt="meituan" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/jd.png')} alt="jd" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/qunar.svg')} alt="qunar" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/iflytek.png')} alt="iflytek" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/china-mobile.svg')} alt="china-mobile" />
-            </div>
-            <div className={clsx('row', styles.userImageWrapper)}>
-              <img className={styles.userImage} src={useBaseUrl('img/user/xiaomi.png')} alt="xiaomi" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/cainiao.svg')} alt="cainiao" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/didi.png')} alt="didi" />
-              <img className={styles.userImage} src={useBaseUrl('img/user/huya.png')} alt="huya" />
+            <div className={clsx('row', styles.developmentInfo)}>
+              {DevelopmentInfoList.map((item, index) => {
+                return (
+                  <div className={styles.developmentCard} key={index}>
+                    <LottieCardBackground />
+                    <div className={styles.developmentBox}>
+                      <div className={styles.developmentCardTitle}>{item.cardTitle}</div>
+                      <div className={styles.developmentCardContent}>{item.cardContent}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </main>
-
-      <div className={clsx('hero', styles.hero)}>
-        <div className="container text--center">
-          <h3 className="hero__subtitle">
-            <Translate>Dragonfly is a</Translate> <a href="https://cncf.io/">Cloud Native Computing Foundation</a>{' '}
-            <Translate>incubating project</Translate>
-          </h3>
-          <div className={clsx('cncf-logo', styles.cncfLogo)} />
+      <section className={styles.user}>
+        <div className={styles.userWrapper}>
+          <h1 className={styles.useTitle}>
+            <Translate>Who Is</Translate>
+            <div className={styles.userTitleHighling}>
+              <Translate>Using</Translate>
+            </div>
+            <Translate>Dragonfly</Translate>
+          </h1>
+          <div className={clsx('row', styles.userImageBox)}>
+            {UserList.map((item, index) => {
+              return (
+                <div className={styles.imageCard} key={index}>
+                  <img className={styles.userImage} src={useBaseUrl(item.imgURL)} alt={item.alt} />
+                  <div>
+                    <a href={item.herf} target="_blank" className={styles.userLink}>
+                      {item.name}
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+            <a href="mailto:dragonfly-discuss@googlegroups.com" className={styles.contactBox}>
+              <LottieContact />
+              <div className={styles.contact}>
+                <Translate>CONTACT US</Translate>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }
 
 const Button = ({ children, href }) => {
   return (
-    <div className="col">
-      <Link className="button button--outline button--primary button--lg" to={href}>
+    <div>
+      <Link className={styles.button} to={href}>
         {children}
       </Link>
     </div>
   );
 };
-
-const BasicInfo = () => (
-  <div className={clsx('hero', styles.hero)}>
-    <div className="container">
-      <div className="row">
-        <div className="col col--6">
-          <div className="row">
-            <h1 className={styles.basicTitle}>
-              <img className={styles.questionIcon} src={useBaseUrl('img/icon/question.svg')} alt="question" />
-              <Translate>What is Dragonfly ?</Translate>
-            </h1>
-          </div>
-
-          <div className="row">
-            <p className={clsx('hero__subtitle', styles.description)}>
-              <Translate>
-                Provide efficient, stable, secure, low-cost file and image distribution services to be the best practice
-                and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing
-                Foundation (CNCF) as an Incubating Level Project.
-              </Translate>
-            </p>
-          </div>
-
-          <div className={clsx('row', styles.badgeWrapper)}>
-            <GitHubButton
-              href="https://github.com/dragonflyoss/Dragonfly2"
-              data-icon="octicon-star"
-              data-show-count="true"
-              aria-label="Star dragonflyoss/Dragonfly2 on GitHub"
-            >
-              Star
-            </GitHubButton>
-            <GitHubButton
-              href="https://github.com/dragonflyoss/Dragonfly2/subscription"
-              data-icon="octicon-eye"
-              data-show-count="true"
-              aria-label="Watch dragonflyoss/Dragonfly2 on GitHub"
-            >
-              Watch
-            </GitHubButton>
-            <GitHubButton
-              href="https://github.com/dragonflyoss/Dragonfly2/fork"
-              data-icon="octicon-repo-forked"
-              data-show-count="true"
-              aria-label="Fork dragonflyoss/Dragonfly2 on GitHub"
-            >
-              Fork
-            </GitHubButton>
-          </div>
-          <div className={clsx('row', styles.badgeWrapper)}>
-            <a href="https://github.com/dragonflyoss/Dragonfly2/releases/">
-              <img src="https://img.shields.io/github/release/dragonflyoss/Dragonfly2.svg" />
-            </a>
-            <a href="https://www.cncf.io/projects/">
-              <img src="https://img.shields.io/badge/CNCF%20Status-Incubating-informational" />
-            </a>
-          </div>
-        </div>
-
-        <div className={clsx('col', styles.architectureImage)}>
-          <img
-            className={styles.architectureImage}
-            src={useBaseUrl('img/landing/architecture.png')}
-            align="right"
-            alt="what is dragonfly"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-);

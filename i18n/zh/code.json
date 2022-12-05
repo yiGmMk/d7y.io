@@ -260,9 +260,6 @@
   "Ecosystem": {
     "message": "生态"
   },
-  "can distribute and preheat images based on the Dragonfly. Image acceleration based on": {
-    "message": "可以基于 Dragonfly 进行镜像分发以及预热。 镜像加速项目"
-  },
   "container runtime can use Dragonfly for data distribution.": {
     "message": "可以在容器运行时使用 Dragonfly 进行数据分发。"
   },
@@ -276,22 +273,16 @@
     "message": "非侵入式接入"
   },
   "Supports multiple containers for distributing images.": {
-    "message": "可无缝支持多种容器用于分发镜像。"
-  },
-  "Host-level speed limit": {
-    "message": "主机级别的限速"
+    "message": "可以非侵入式的接入多种容器客户端，并提供镜像分发。"
   },
   "Support for host-level limits speed.": {
-    "message": "除了像许多其他下载工具针对当前下载任务的限速之外，还支持针对整个机器的限速。"
+    "message": "除了像许多其他下载工具针对当前下载任务的限速之外，还可以针对整个节点级别进行限速、调整负载等。"
   },
   "Consistency": {
     "message": "一致性"
   },
-  "Make sure all downloaded files are consistent.": {
-    "message": "可确保所有下载的文件是一致的，即使用户不进行最终一致性校验。"
-  },
-  "Isolate abnormal peers": {
-    "message": "隔离异常节点"
+  "It can ensure that the same file is consistent in peer transmission, even if the user does not perform final consistency check.": {
+    "message": "可确保同样的文件在节点传输中是一致的，即使用户不进行最终一致性校验。"
   },
   "Automatically isolate abnormal peers to improve download stability.": {
     "message": "自动隔离异常节点来提高下载稳定性和成功率。"
@@ -339,7 +330,8 @@
     "message": "查看全部 {count} 个结果"
   },
   "Provide efficient, stable, secure, low-cost file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation (CNCF) as an Incubating Level Project.": {
-    "message": "提供高效、稳定、安全且低耗的文件和镜像分发系统，并且是云原生架构中镜像加速领域的标准解决方案以及最佳实践。现在作为孵化级项目被托管在 CNCF 基金会。"
+    "message": "提供高效、稳定、安全且低耗的文件和镜像分发系统，并且是云原生架构中镜像加速领域的标准解决方案以及最佳实践。现在作为孵化级项目被托管在 CNCF 基金会。",
+    "description": "Provide efficient, stable, secure, low-cost file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation (CNCF) as an Incubating Level Project."
   },
   "theme.admonition.note": {
     "message": "备注",
@@ -452,5 +444,112 @@
   "theme.SearchModal.placeholder": {
     "message": "搜索文档",
     "description": "The placeholder of the input of the DocSearch pop-up modal"
+  },
+  "View Features": {
+    "message": "查看功能"
+  },
+  "Dragonfly contains many features as a image and file distribution system.": {
+    "message": "Dragonfly 作为镜像和文件分发系统时，包含许多功能："
+  },
+  "So far, dragonflies have experienced the following stages of development.": {
+    "message": "到目前为止，Dragonfly 经历了以下发展阶段："
+  },
+  "Dragonfly 1.x": {
+    "message": "Dragonfly 1.x"
+  },
+  "In November 2017,the Dragonfly 1.x project was open sourced,and was selected and put into production use by many internet companies.": {
+    "message": "2017年11月，Dragonfly 1.x 项目正式开源，被许多大规模互联网公司选用并投入生产使用。"
+  },
+  " CNCF SandBox ": {
+    "message": "CNCF SandBox"
+  },
+  "In October 2018,it entered the CNCF Sandbox, becoming the third project in China to enter the CNCF Sandbox.": {
+    "message": "2018年10月，正式进入 CNCF Sandbox，成为中国第三个进入CNCF Sandbox 项目。"
+  },
+  "CNCF Incubating": {
+    "message": "CNCF Incubating"
+  },
+  "In April 2020,the CNCF TOC voted to accept Dragonfly as an official entry into CNCF Incubating.": {
+    "message": "2020年4月由 CNCF TOC 投票决定接受 Dragonfly 正式进入。CNCF Incubating。"
+  },
+  "Dragonfly 2": {
+    "message": "Dragonfly 2"
+  },
+  "In April 2021, taking the advantages of Dragonfly 1 .x and making a lot of optimizations for known issues. Dragonfly 2 is open source.": {
+    "message": "2021年 4月汲取 Dragonfly 1.x 的优点并针对已知问题做了大量优化。Dragonfly 2 正式开源。"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "标签",
+    "description": "The title of the tag list page"
+  },
+  " Learn More": {
+    "message": "了解更多",
+    "description": "Learn More"
+  },
+  "Provide": {
+    "message": "提供"
+  },
+  "efficient, stable, secure, low-cost": {
+    "message": "高效、稳定、安全、低成本"
+  },
+  "file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation": {
+    "message": "的文件和镜像分发服务，云原生镜像加速领域的标准解决方案。该项目由云原生计算基金会"
+  },
+  "CNCF": {
+    "message": "云原生计算机基金会",
+    "description": "CNCF"
+  },
+  "Partners": {
+    "message": "合作伙伴"
+  },
+  "Dragonfly": {
+    "message": "Dragonfly"
+  },
+  "Features": {
+    "message": "功能"
+  },
+  "Milestones": {
+    "message": "里程碑"
+  },
+  "Who Is": {
+    "message": "谁在"
+  },
+  "Using": {
+    "message": "使用"
+  },
+  "CONTACT US": {
+    "message": "联系我们"
+  },
+  "as an Incubating Level Project.": {
+    "message": "托管作为孵化级项目。"
+  },
+  "(CNCF)": {
+    "message": "(CNCF)"
+  },
+  "Isolate Abnormal Peers": {
+    "message": "隔离异常节点"
+  },
+  "can distribute and preheat images based on the Dragonfly. if image acceleration based on": {
+    "message": "可以基于 Dragonfly 进行镜像分发以及预热。 镜像加速项目"
+  },
+  "or": {
+    "message": "和"
+  },
+  ", Dragonfly can be used to distribute data.": {
+    "message": "，可以在容器运行时使用 Dragonfly 进行数据分发。"
+  },
+  "Peer Level Control": {
+    "message": "节点级别控制"
+  },
+  "In addition to the speed limit for the task like many other download tools, you can also limit the speed and adjust the load limit for the peer level.": {
+    "message": "除了像许多其他下载工具针对当前下载任务的限速之外，还可以针对整个节点级别进行限速、调整负载等。"
   }
 }

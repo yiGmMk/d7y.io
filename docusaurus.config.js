@@ -71,6 +71,10 @@ const config = {
         hitsPerPage: 10,
       },
     },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: true,
+    },
     navbar: {
       title: 'Dragonfly',
       logo: {
@@ -88,24 +92,26 @@ const config = {
           label: 'Blog',
           position: 'left',
         },
+       
+        {
+          label: 'Community',
+          position: 'left',
+          href: 'https://github.com/dragonflyoss/Dragonfly2#community',
+        },
+        {
+          label: 'Nydus',
+          position: 'left',
+          href: 'https://nydus.dev/',
+        },
         {
           type: 'docsVersionDropdown',
           position: 'right',
         },
         {
-          label: 'Community',
-          position: 'right',
-          href: 'https://github.com/dragonflyoss/Dragonfly2#community',
-        },
-        {
-          label: 'Nydus',
-          position: 'right',
-          href: 'https://nydus.dev/',
-        },
-        {
           type: 'localeDropdown',
           position: 'right',
         },
+       
         {
           href: 'https://github.com/dragonflyoss/Dragonfly2',
           className: 'header-github-link',
