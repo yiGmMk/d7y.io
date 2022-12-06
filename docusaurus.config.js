@@ -95,7 +95,7 @@ const config = {
         {
           to: 'videos/sessions/en/2022-11-12',
           activeBasePath: 'videos',
-          label: 'Videos',
+          label: 'Video',
           position: 'left',
         },
         {
