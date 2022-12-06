@@ -19,8 +19,8 @@
     "message": "Nydus",
     "description": "Navbar item with label Nydus"
   },
-  "item.label.Videos": {
+  "item.label.Video": {
     "message": "视频",
-    "description": "Navbar item with label Videos"
+    "description": "Navbar item with label Video"
   }
 }
