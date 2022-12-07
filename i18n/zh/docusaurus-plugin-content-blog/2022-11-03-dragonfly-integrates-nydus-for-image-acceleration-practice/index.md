@@ -118,6 +118,7 @@ dfdaemon:
   config:
     verbose: true
     pprofPort: 18066
+    # metrics变量中要包含":"
     metrics: :8000
     download:
       prefetch: true

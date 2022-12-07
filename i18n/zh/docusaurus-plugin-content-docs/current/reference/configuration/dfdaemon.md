@@ -373,6 +373,7 @@ security:
     # validityPeriod 是颁发证书的有效时长。
     validityPeriod: 4320h
 # 数据收集服务地址。
+# metrics变量中要包含":"
 # metrics: ':8000'
 
 network:

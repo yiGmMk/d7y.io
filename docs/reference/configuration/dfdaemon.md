@@ -383,6 +383,7 @@ security:
     # validityPeriod is the validity period  of certificate.
     validityPeriod: 4320h
 # Prometheus metrics address.
+# ":" is necessary for metrics value
 # metrics: ':8000'
 
 network:
