@@ -48,7 +48,7 @@ export default function Home() {
       imgURL: 'img/user/baidu.svg',
       alt: 'baidu',
       herf: 'https://baidu.com/',
-      name: 'Bai du',
+      name: 'Baidu',
     },
     {
       imgURL: 'img/user/bilibili.svg',
@@ -78,7 +78,7 @@ export default function Home() {
       imgURL: 'img/user/cloudwise.jpg',
       alt: 'cloud wise',
       herf: 'https://www.cloudwise.cool/',
-      name: ' Cloud wise',
+      name: ' Cloud Wise',
     },
     {
       imgURL: 'img/user/daocloud.png',
@@ -108,13 +108,13 @@ export default function Home() {
       imgURL: 'img/user/huawei.svg',
       alt: 'huawei',
       herf: 'https://www.huawei.com/cn/',
-      name: 'Hua wei',
+      name: 'Huawei',
     },
     {
       imgURL: 'img/user/huya.png',
       alt: 'huya',
       herf: 'https://www.huya.com/',
-      name: ' Hu ya',
+      name: ' Huya',
     },
     {
       imgURL: 'img/user/intel.svg',
@@ -138,7 +138,7 @@ export default function Home() {
       imgURL: 'img/user/kuaishou.svg',
       alt: 'kuaishou',
       herf: 'https://kuaishou.com/',
-      name: ' Kuai shou',
+      name: ' Kuaishou',
     },
     {
       imgURL: 'img/user/lazada.svg',
@@ -150,7 +150,7 @@ export default function Home() {
       imgURL: 'img/user/meituan.svg',
       alt: 'mei tuan',
       herf: 'https://about.meituan.com/',
-      name: ' Mei tuan',
+      name: ' Meituan',
     },
     {
       imgURL: 'img/user/neteasegames.jpeg',
@@ -180,7 +180,7 @@ export default function Home() {
       imgURL: 'img/user/xiaomi.png',
       alt: 'xiaomi',
       herf: 'https://www.mi.com/global/',
-      name: 'Xiao mi',
+      name: 'Xiaomi',
     },
     {
       imgURL: 'img/user/xperi.svg',
@@ -283,7 +283,7 @@ export default function Home() {
                       architectures. It is hosted by the Cloud Native Computing Foundation
                     </Translate>
                     <span className={styles.highlight}>
-                      <Translate> (CNCF) </Translate>
+                      <Translate>(CNCF)</Translate>
                     </span>
                     <Translate>as an Incubating Level Project.</Translate>
                   </p>

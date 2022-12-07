@@ -124,6 +124,10 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   }
 }
 
+.navbar__brand{
+  margin-top: 0.13rem;
+}
+
 .navbar__title {
   font-family: HFPopin;
   font-size: 1.3rem;
