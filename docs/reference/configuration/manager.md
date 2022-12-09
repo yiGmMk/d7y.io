@@ -81,15 +81,17 @@ database:
     # Redis addresses.
     addrs:
       - dragonfly:6379
+    # Redis sentinel master name.
+    masterName: ''
     # Redis username.
     username: ''
     # Redis password.
     password: ''
-    # Redis DB name.
+    # Redis DB.
     db: 0
-    # Redis brokerDB name.
+    # Redis broker DB.
     brokerDB: 1
-    # Redis backendDB name.
+    # Redis backend DB.
     backendDB: 2
 
 # Manager server cache.

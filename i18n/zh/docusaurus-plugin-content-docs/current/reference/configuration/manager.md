@@ -78,6 +78,8 @@ database:
     # 服务地址。
     addrs:
       - dragonfly:6379
+    # 哨兵模式的 Master Name。
+    masterName: ''
     # 用户名
     username: ''
     # 密码。

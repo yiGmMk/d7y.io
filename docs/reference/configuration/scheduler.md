@@ -120,13 +120,15 @@ job:
     # Redis addresses.
     addrs:
       - dragonfly:6379
+    # Redis sentinel master name.
+    masterName: ''
     # Redis username.
     username: ''
     # Redis password.
     password: ''
-    # Redis brokerDB name.
+    # Redis broker DB.
     brokerDB: 1
-    # Redis backendDB name.
+    # Redis backend DB.
     backendDB: 2
 
 # Store task download information.
