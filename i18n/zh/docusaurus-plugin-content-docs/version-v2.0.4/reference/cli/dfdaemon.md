@@ -35,7 +35,7 @@ dfget [command]
 
 ```text
       --accept-regex string   Recursively download only. Specify a regular expression to accept the complete URL. In this case, you have to enclose the pattern into quotes to prevent your shell from expanding it
-      --callsystem string     The caller name which is mainly used for statistics and access control
+           The caller name which is mainly used for statistics and access control
       --config string         the path of configuration file with yaml extension name, default is /etc/dragonfly/dfget.yaml, it can also be set by env var: DFGET_CONFIG
       --console               whether logger output records to the stdout
       --digest string         Check the integrity of the downloaded file with digest, in format of md5:xxx or sha256:yyy
@@ -49,7 +49,6 @@ dfget [command]
   -l, --list                  Recursively download only. List all urls instead of downloading them.
       --logdir string         Dfget log directory
   -O, --output string         Destination path which is used to store the downloaded file, it must be a full path
-  -p, --pattern string        The downloading pattern: p2p/seed-peer/source
       --pprof-port int        listen port for pprof, 0 represents random port (default -1)
   -r, --recursive             Recursively download all resources in target url, the target source client must support list action
       --reject-regex string   Recursively download only. Specify a regular expression to reject the complete URL. In this case, you have to enclose the pattern into quotes to prevent your shell from expanding it
@@ -86,7 +85,7 @@ dfget --schedulers 127.0.0.1:8002 -O /path/to/output -u "http://example.com/obje
 ```text
 
       --accept-regex string   Recursively download only. Specify a regular expression to accept the complete URL. In this case, you have to enclose the pattern into quotes to prevent your shell from expanding it
-      --callsystem string     The caller name which is mainly used for statistics and access control
+           The caller name which is mainly used for statistics and access control
       --config string         the path of configuration file with yaml extension name, default is /etc/dragonfly/dfget.yaml, it can also be set by env var: DFGET_CONFIG
       --console               whether logger output records to the stdout
       --digest string         Check the integrity of the downloaded file with digest, in format of md5:xxx or sha256:yyy
@@ -100,7 +99,6 @@ dfget --schedulers 127.0.0.1:8002 -O /path/to/output -u "http://example.com/obje
   -l, --list                  Recursively download only. List all urls instead of downloading them.
       --logdir string         Dfget log directory
   -O, --output string         Destination path which is used to store the downloaded file, it must be a full path
-  -p, --pattern string        The downloading pattern: p2p/seed-peer/source
       --pprof-port int        listen port for pprof, 0 represents random port (default -1)
   -r, --recursive             Recursively download all resources in target url, the target source client must support list action
       --reject-regex string   Recursively download only. Specify a regular expression to reject the complete URL. In this case, you have to enclose the pattern into quotes to prevent your shell from expanding it
