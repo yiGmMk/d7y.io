@@ -237,9 +237,9 @@ redis:
   enable: false
 
 externalRedis:
-  host: redis-host
+  addrs:
+    - redis.example.com:6379
   password: dragonfly
-  port: 6379
 ```
 
 Install dragonfly with `values.yaml`.
@@ -276,7 +276,7 @@ manager:
 
 externalManager:
   enable: true
-  host: 'dragonfly-manager.dragonfly-system.svc.cluster.local'
+  host: dragonfly-manager.dragonfly-system.svc.cluster.local
   restPort: 8080
   grpcPort: 65003
 
@@ -284,9 +284,9 @@ redis:
   enable: false
 
 externalRedis:
-  host: redis-host
+  addrs:
+    - redis.example.com:6379
   password: dragonfly
-  port: 6379
 
 mysql:
   enable: false
