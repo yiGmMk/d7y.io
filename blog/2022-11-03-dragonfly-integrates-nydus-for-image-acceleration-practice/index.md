@@ -119,11 +119,11 @@ seedPeer:
 
 dfdaemon:
   hostNetwork: true
+  metrics:
+    enable: true
   config:
     verbose: true
     pprofPort: 18066
-    # ":" is necessary for metrics value
-    metrics: :8000
     download:
       prefetch: true
     proxy:

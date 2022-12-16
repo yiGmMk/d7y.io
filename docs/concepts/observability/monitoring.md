@@ -10,7 +10,7 @@ Prometheus and grafana configurations are maintained in the
 Grafana dashboards are published in [grafana.com](https://grafana.com/),
 and the address of the dashboards are [Manager](https://grafana.com/grafana/dashboards/15945/),
 [Scheduler](https://grafana.com/grafana/dashboards/15944/) and
-[Seed Peer](https://grafana.com/grafana/dashboards/16349/).
+[Peer](https://grafana.com/grafana/dashboards/15946/).
 
 The following dragonfly monitoring example is based on [kubernetes](https://kubernetes.io/), and uses the
 [prometheus-community/kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack/)
@@ -78,6 +78,10 @@ seedPeer:
 dfdaemon:
   image: d7yio/dfdaemon
   tag: latest
+  metrics:
+    enable: true
+    serviceMonitor:
+      enable: true
 
 manager:
   image: d7yio/manager
@@ -111,11 +115,11 @@ Dragonfly grafana dashboard info is:
 | :------------------ | :---- | :------------------------------------------- | :----------------------------------------- |
 | Dragonfly Manager   | 15945 | https://grafana.com/grafana/dashboards/15945 | Granafa dashboard for dragonfly manager.   |
 | Dragonfly Scheduler | 15944 | https://grafana.com/grafana/dashboards/15944 | Granafa dashboard for dragonfly scheduler. |
-| Dragonfly Seed Peer | 16349 | https://grafana.com/grafana/dashboards/16349 | Granafa dashboard for dragonfly seed peer. |
+| Dragonfly Peer      | 15946 | https://grafana.com/grafana/dashboards/15946 | Granafa dashboard for dragonfly peer.      |
 
 <!-- markdownlint-restore -->
 
-- Import dragonfly grafana dashboard using ID, IDs are `15945`, `15944` and `16349`, refer to [export-import](https://grafana.com/docs/grafana/latest/dashboards/export-import/)
+- Import dragonfly grafana dashboard using ID, IDs are `15945`, `15944` and `15946`, refer to [export-import](https://grafana.com/docs/grafana/latest/dashboards/export-import/)
 
 ![grafana-import-dashboard](../../resource/monitoring/grafana-import-dashboard.jpg)
 
@@ -125,4 +129,4 @@ Dragonfly grafana dashboard info is:
 
 ![grafana-scheduler](../../resource/monitoring/grafana-scheduler.jpg)
 
-![grafana-seed-peer](../../resource/monitoring/grafana-seed-peer.jpg)
+![grafana-peer](../../resource/monitoring/grafana-peer.jpg)

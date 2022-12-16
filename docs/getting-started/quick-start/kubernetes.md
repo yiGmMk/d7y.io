@@ -100,11 +100,11 @@ seedPeer:
     pprofPort: 18066
 
 dfdaemon:
+  metrics:
+    enable: true
   config:
     verbose: true
     pprofPort: 18066
-    # ":" is necessary for metrics value
-    metrics: :8000
 
 manager:
   replicas: 1
