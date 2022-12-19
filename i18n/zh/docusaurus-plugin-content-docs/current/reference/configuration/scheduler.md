@@ -161,6 +161,13 @@ security:
   # Scheduler、Seed Peer 和 Peer 之间通信以及下载流量就都支持 TLS 了。
   tlsPolicy: 'prefer'
   certSpec:
+    # dnsNames 是证书的 dnsNames 列表.
+    dnsNames:
+      - 'dragonfly-scheduler'
+      - 'dragonfly-scheduler.dragonfly-system.svc'
+      - 'dragonfly-scheduler.dragonfly-system.svc.cluster.local'
+    # ipAddresses 是证书的 ipAddresses 列表.
+    ipAddresses:
     # validityPeriod 是颁发证书的有效时长。
     validityPeriod: 4320h
 

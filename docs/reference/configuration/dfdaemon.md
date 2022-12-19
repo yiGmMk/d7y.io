@@ -380,6 +380,10 @@ security:
   # The second step is to set tlsPolicy to prefer, and then completely upgrade the dragonfly services.
   tlsPolicy: 'prefer'
   certSpec:
+    # dnsNames is a list of dns names be set on the certificate.
+    dnsNames:
+    # ipAddresses is a list of ip addresses be set on the certificate.
+    ipAddresses:
     # validityPeriod is the validity period  of certificate.
     validityPeriod: 4320h
 # Prometheus metrics address.
