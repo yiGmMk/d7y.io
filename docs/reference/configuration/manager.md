@@ -111,16 +111,23 @@ cache:
 objectStorage:
   # Enable object storage.
   enable: false
-  # Object storage name of type, it can be s3 or oss.
+  # Name is object storage name of type, it can be s3, oss or obs.
   name: s3
-  # Storage region.
+  # Region is storage region.
   region: ''
-  # Datacenter endpoint.
+  # Endpoint is datacenter endpoint.
   endpoint: ''
-  # Access key id.
+  # AccessKey is access key ID.
   accessKey: ''
-  # Access key secret.
+  # SecretKey is access key secret.
   secretKey: ''
+  # s3ForcePathStyle sets force path style for s3, true by default.
+  # Set this to `true` to force the request to use path-style addressing,
+  # i.e., `http://s3.amazonaws.com/BUCKET/KEY`. By default, the S3 client
+  # will use virtual hosted bucket addressing when possible
+  # (`http://BUCKET.s3.amazonaws.com/KEY`).
+  # Refer to https://github.com/aws/aws-sdk-go/blob/main/aws/config.go#L118.
+  s3ForcePathStyle: true
 
 # Prometheus metrics.
 metrics:

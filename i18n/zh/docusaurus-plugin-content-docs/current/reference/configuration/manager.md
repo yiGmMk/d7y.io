@@ -118,6 +118,9 @@ objectStorage:
   accessKey: ''
   # access key 的密钥。
   secretKey: ''
+  # s3ForcePathStyle 设置 S3 的访问路径风格, 默认为 true。
+  # 参考文档 https://github.com/aws/aws-sdk-go/blob/main/aws/config.go#L118。
+  s3ForcePathStyle: true
 
 # 数据收集服务。
 metrics:
