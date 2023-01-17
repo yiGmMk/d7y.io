@@ -102,8 +102,6 @@ host:
   idc: ''
   # 安全域信息，不同安全域之间网络隔离。
   securityDomain: ''
-  # 网络拓扑结构，通过 "|" 符号分隔。
-  netTopology: ''
   # 主机名称。
   # hostname: ""
 

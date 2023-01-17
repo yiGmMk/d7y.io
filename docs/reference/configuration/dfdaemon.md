@@ -104,8 +104,6 @@ host:
   idc: ''
   # Security domain deployed by daemon, network isolation between different security domains.
   securityDomain: ''
-  # Network topology, separated by "|" characters.
-  netTopology: ''
   # Daemon hostname.
   # hostname: ""
 

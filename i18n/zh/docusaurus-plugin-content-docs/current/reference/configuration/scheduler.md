@@ -77,8 +77,6 @@ dynConfig:
 host:
   # 实例所在机房。
   idc: ''
-  # 实例网络拓扑信息。
-  netTopology: ''
   # 实例所在的地理位置信息。
   location: ''
 
