@@ -119,9 +119,9 @@ download:
   pieceDownloadTimeout: 30s
   # When request data with range header, prefetch data not in range.
   prefetch: false
-  # Golang transport option.
+  # Golang transport option for downloading pieces from other peers.
   transportOption:
-    # Ddial timeout.
+    # Dial timeout.
     dialTimeout: 2s
     # Keep alive.
     keepAlive: 30s
@@ -135,6 +135,52 @@ download:
     tlsHandshakeTimeout: 1s
     # Same with http.Transport.ExpectContinueTimeout.
     expectContinueTimeout: 2s
+  # Resource clients option for back source, the key is the scheme of resource client
+  # This option supports after v2.0.9
+  resourceClients:
+    # The https resource
+    https:
+      # Upstream proxy, default is none
+      proxy: http://127.0.0.1:8080
+      # Dial timeout. Default: 30s
+      dialTimeout: 30s
+      # Keep alive. Default: 30s
+      keepAlive: 30s
+      # Same with http.Transport.MaxIdleConns.
+      maxIdleConns: 100
+      # Same with http.Transport.IdleConnTimeout. Default: 90s
+      idleConnTimeout: 90s
+      # Same with http.Transport.ResponseHeaderTimeout. Default: 30s
+      responseHeaderTimeout: 30s
+      # Same with http.Transport.TLSHandshakeTimeout.
+      tlsHandshakeTimeout: 30s
+      # Same with http.Transport.ExpectContinueTimeout. Default: 10s
+      expectContinueTimeout: 10s
+      # Same with http.Transport.TLSClientConfig.InsecureSkipVerify.
+      # Caution: the value default is true, please keep it false in production.
+      # We will make the vaule false by default in futrue.
+      insecureSkipVerify: true
+    # The http resources, most of it is same with https scheme
+    http:
+      proxy: http://127.0.0.1:8080
+      dialTimeout: 30s
+      keepAlive: 30s
+      maxIdleConns: 100
+      idleConnTimeout: 90s
+      responseHeaderTimeout: 30s
+      tlsHandshakeTimeout: 30s
+      expectContinueTimeout: 10s
+    # The singularity oras resources, most of it is same with https scheme
+    oras:
+      proxy: http://127.0.0.1:8080
+      dialTimeout: 30s
+      keepAlive: 30s
+      maxIdleConns: 100
+      idleConnTimeout: 90s
+      responseHeaderTimeout: 30s
+      tlsHandshakeTimeout: 30s
+      expectContinueTimeout: 10s
+      insecureSkipVerify: true
   # Concurrent option for back source, default: empty
   # if you want to enable concurrent option, thresholdSize and goroutineCount is enough, keep other options empty is okay.
   concurrent:

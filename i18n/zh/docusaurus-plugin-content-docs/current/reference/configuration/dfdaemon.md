@@ -117,7 +117,7 @@ download:
   pieceDownloadTimeout: 30s
   # 当请求使用 Range Header，请求部分数据的时候，可以预先获取非 Range 内的数据。
   prefetch: false
-  # golang transport 选项。
+  # 用于 peer 之间下载 piece 的 http client 里的 golang transport 选项。
   transportOption:
     # 连接超时时间。
     dialTimeout: 2s
@@ -133,6 +133,52 @@ download:
     tlsHandshakeTimeout: 1s
     # 等同于 http.Transport.ExpectContinueTimeout。
     expectContinueTimeout: 2s
+  # 客户端回源配置, Key 是对应的协议（小写）
+  # 该配置从 v2.0.9 开始生效
+  resourceClients:
+    # https 协议回源客户端配置
+    https:
+      # 上游代理地址, 默认为空
+      proxy: http://127.0.0.1:8080
+      # 连接超时时间。默认：30s
+      dialTimeout: 30s
+      # 保活时间。默认：30s
+      keepAlive: 30s
+      # 等同于 http.Transport.MaxIdleConns。
+      maxIdleConns: 100
+      # 等同于 http.Transport.IdleConnTimeout。默认：90s
+      idleConnTimeout: 90s
+      # 等同于 http.Transport.ResponseHeaderTimeout。 默认：30s
+      responseHeaderTimeout: 30s
+      # 等同于 http.Transport.TLSHandshakeTimeout。
+      tlsHandshakeTimeout: 30s
+      # 等同于 http.Transport.ExpectContinueTimeout。 默认：10s
+      expectContinueTimeout: 10s
+      # 等同于 http.Transport.TLSClientConfig.InsecureSkipVerify.
+      # 注意: 该值默认为 true, 在生产环境中，请确保该配置未 false。
+      # 在未来的版本中，默认值可能会变更为 false。
+      insecureSkipVerify: true
+    # http 协议回源客户端配置, 和 https 协议的配置类似
+    http:
+      proxy: http://127.0.0.1:8080
+      dialTimeout: 30s
+      keepAlive: 30s
+      maxIdleConns: 100
+      idleConnTimeout: 90s
+      responseHeaderTimeout: 30s
+      tlsHandshakeTimeout: 30s
+      expectContinueTimeout: 10s
+    # singularity oras 协议回源客户端配置, 和 https 协议的配置类似
+    oras:
+      proxy: http://127.0.0.1:8080
+      dialTimeout: 30s
+      keepAlive: 30s
+      maxIdleConns: 100
+      idleConnTimeout: 90s
+      responseHeaderTimeout: 30s
+      tlsHandshakeTimeout: 30s
+      expectContinueTimeout: 10s
+      insecureSkipVerify: true
   # 回源并发选项, 默认不并发。
   # 一般设置 thresholdSize 和 goroutineCount 就够用了。
   concurrent:
