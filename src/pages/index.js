@@ -276,11 +276,12 @@ export default function Home() {
                   <p className={clsx('hero__subtitle', styles.description)}>
                     <Translate>Provide</Translate>
                     <span className={styles.highlight}>
-                      <Translate>efficient, stable, secure, low-cost</Translate>
+                      <Translate>efficient, stable, secure</Translate>
                     </span>
                     <Translate>
-                      file and image distribution services to be the best practice and standard solution in cloud native
-                      architectures. It is hosted by the Cloud Native Computing Foundation
+                      file distribution and image acceleration based on p2p technology to be the best practice and
+                      standard solution in cloud native architectures. It is hosted by the Cloud Native Computing
+                      Foundation
                     </Translate>
                     <span className={styles.highlight}>
                       <Translate>(CNCF)</Translate>

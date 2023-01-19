@@ -1,33 +1,6 @@
 {
-  "Get Started": {
-    "message": "快速开始"
-  },
   "Learn More": {
     "message": "了解更多"
-  },
-  "Why Dragonfly": {
-    "message": "为什么使用 Dragonfly"
-  },
-  "Originally it was born to solve distribution at large scales, such as file distribution, log distribution, image distribution, etc. It solves the following problems:": {
-    "message": "Dragonfly 是为了解决大规模文件分发下载问题，如文件分发、日志分发、图像分发等。其主要解决了以下问题："
-  },
-  "Intro To Dragonfly": {
-    "message": "介绍 Dragonfly"
-  },
-  "Want to learn more about how dragonfly works ? Watch this video to explain the new evolution of dragonfly. The content will also cover how to deploy dragonfly and practice examples.": {
-    "message": "想了解更多关于蜻蜓的工作原理吗? 观看下面视频，介绍了蜻蜓的最新进展。内容还将包括如何部署蜻蜓和实践示例。"
-  },
-  "Who Is Using Dragonfly": {
-    "message": "谁在用 Dragonfly"
-  },
-  "Dragonfly is a": {
-    "message": "Dragonfly 是一个"
-  },
-  "incubating project": {
-    "message": "孵化级项目"
-  },
-  "What is Dragonfly ?": {
-    "message": "Dragonfly 是什么?"
   },
   "theme.ErrorPageContent.title": {
     "message": "页面已崩溃。",
@@ -260,9 +233,6 @@
   "Ecosystem": {
     "message": "生态"
   },
-  "container runtime can use Dragonfly for data distribution.": {
-    "message": "可以在容器运行时使用 Dragonfly 进行数据分发。"
-  },
   "P2P File Distribution": {
     "message": "基于 P2P 的文件分发"
   },
@@ -274,9 +244,6 @@
   },
   "Supports multiple containers for distributing images.": {
     "message": "可以非侵入式的接入多种容器客户端，并提供镜像分发。"
-  },
-  "Support for host-level limits speed.": {
-    "message": "除了像许多其他下载工具针对当前下载任务的限速之外，还可以针对整个节点级别进行限速、调整负载等。"
   },
   "Consistency": {
     "message": "一致性"
@@ -328,10 +295,6 @@
   },
   "theme.SearchBar.seeAll": {
     "message": "查看全部 {count} 个结果"
-  },
-  "Provide efficient, stable, secure, low-cost file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation (CNCF) as an Incubating Level Project.": {
-    "message": "提供高效、稳定、安全且低耗的文件和镜像分发系统，并且是云原生架构中镜像加速领域的标准解决方案以及最佳实践。现在作为孵化级项目被托管在 CNCF 基金会。",
-    "description": "Provide efficient, stable, secure, low-cost file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation (CNCF) as an Incubating Level Project."
   },
   "theme.admonition.note": {
     "message": "备注",
@@ -460,9 +423,6 @@
   "In November 2017,the Dragonfly 1.x project was open sourced,and was selected and put into production use by many internet companies.": {
     "message": "2017年11月，Dragonfly 1.x 项目正式开源，被许多大规模互联网公司选用并投入生产使用。"
   },
-  " CNCF SandBox ": {
-    "message": "CNCF SandBox"
-  },
   "In October 2018,it entered the CNCF Sandbox, becoming the third project in China to enter the CNCF Sandbox.": {
     "message": "2018年10月，正式进入 CNCF Sandbox，成为中国第三个进入CNCF Sandbox 项目。"
   },
@@ -490,22 +450,8 @@
     "message": "标签",
     "description": "The title of the tag list page"
   },
-  " Learn More": {
-    "message": "了解更多",
-    "description": "Learn More"
-  },
   "Provide": {
     "message": "提供"
-  },
-  "efficient, stable, secure, low-cost": {
-    "message": "高效、稳定、安全、低成本"
-  },
-  "file and image distribution services to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation": {
-    "message": "的文件和镜像分发服务，云原生镜像加速领域的标准解决方案。该项目由云原生计算基金会"
-  },
-  "CNCF": {
-    "message": "云原生计算机基金会",
-    "description": "CNCF"
   },
   "Partners": {
     "message": "合作伙伴"
@@ -532,7 +478,7 @@
     "message": "托管作为孵化级项目。"
   },
   "(CNCF)": {
-    "message": "(CNCF)"
+    "message": "云原生计算机基金会"
   },
   "Isolate Abnormal Peers": {
     "message": "隔离异常节点"
@@ -554,5 +500,11 @@
   },
   "CNCF SandBox": {
     "message": "CNCF SandBox"
+  },
+  "efficient, stable, secure": {
+    "message": "高效、稳定、安全"
+  },
+  "file distribution and image acceleration based on p2p technology to be the best practice and standard solution in cloud native architectures. It is hosted by the Cloud Native Computing Foundation": {
+    "message": "的基于 P2P 技术的文件分发和镜像加速系统，并且是云原生架构中镜像加速领域的标准解决方案以及最佳实践。现在为"
   }
 }
