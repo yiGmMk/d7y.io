@@ -1,7 +1,8 @@
 ---
 name: Feature Request
 about: Request a new feature for d7y.io
-labels: kind/feature
+labels: enhancement
+
 ---
 
 ### Feature request:

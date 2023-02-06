@@ -1,7 +1,8 @@
 ---
 name: Bug Report
 about: Report a bug for d7y.io
-labels: kind/bug
+labels: bug
+
 ---
 
 ### Bug report:
