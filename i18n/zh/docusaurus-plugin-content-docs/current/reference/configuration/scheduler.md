@@ -139,8 +139,8 @@ metrics:
   enable: true
   # 数据服务地址。
   addr: ':8000'
-  # 开机收集 peer host 数据。
-  enablePeerHost: false
+  # 收集 host 数据。
+  enableHost: false
 
 security:
   # 自动获取 Manager 签发的客户端证书。

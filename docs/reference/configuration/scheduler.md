@@ -145,8 +145,8 @@ metrics:
   enable: true
   # Metrics service address.
   addr: ':8000'
-  # Enable peer host metrics.
-  enablePeerHost: false
+  # Enable host metrics.
+  enableHost: false
 
 security:
   # autoIssueCert indicates to issue client certificates for all grpc call.
