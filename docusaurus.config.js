@@ -93,7 +93,7 @@ const config = {
           position: 'left',
         },
         {
-          to: 'videos/sessions/en/2022-11-12',
+          to: 'videos/sessions/en/2023-02-15',
           activeBasePath: 'videos',
           label: 'Video',
           position: 'left',
