@@ -61,12 +61,14 @@ scheduler:
     pieceDownloadTimeout: 30m
     # Peer 的回收间隔。
     peerGCInterval: 10s
-    # 不活跃的 Peer 的存活时间。
+    # 不活跃的 Peer 的存活时间。如果当前 Peer 被其他 Peer 下载成功，那么会重置 PeerTTL 时间。
     peerTTL: 24h
-    # Task 的回收间隔。
+    # Task 的回收间隔。如果 Task 下的 Peer 都被释放掉，那么 Task 也会被释放。
     taskGCInterval: 30m
     # Host 的回收间隔。
-    hostGCInterval: 1h
+    hostGCInterval: 6h
+    # 不活跃的 Host 的存活时间。如果 Host 发送心跳至 Scheduler，那么会重置 HostTTL 时间。
+    hostTTL: 1h
 
 # 动态数据配置。
 dynConfig:
