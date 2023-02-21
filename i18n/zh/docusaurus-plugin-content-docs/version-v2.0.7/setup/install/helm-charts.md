@@ -181,7 +181,7 @@ containerRuntime:
 
 ```shell
 helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/
-helm install --create-namespace --namespace dragonfly-system dragonfly dragonfly/dragonfly
+helm install --create-namespace --namespace dragonfly-system --version 0.8.3 dragonfly dragonfly/dragonfly
 ```
 
 ### 自定义配置安装
@@ -215,7 +215,7 @@ externalRedis:
 
 ```shell
 helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/
-helm install --create-namespace --namespace dragonfly-system \
+helm install --create-namespace --namespace dragonfly-system --version 0.8.3 \
     dragonfly dragonfly/dragonfly -f values.yaml
 ```
 

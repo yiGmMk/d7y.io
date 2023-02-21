@@ -209,7 +209,7 @@ recommended. Just run `minikube start`.
 
 ```shell
 helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/
-helm install --create-namespace --namespace dragonfly-system dragonfly dragonfly/dragonfly
+helm install --create-namespace --namespace dragonfly-system --version 0.8.3 dragonfly dragonfly/dragonfly
 ```
 
 ### Install with custom configuration {#install-with-custom-configuration}
@@ -246,7 +246,7 @@ Install dragonfly with `values.yaml`.
 
 ```shell
 helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/
-helm install --create-namespace --namespace dragonfly-system \
+helm install --create-namespace --namespace dragonfly-system --version 0.8.3 \
     dragonfly dragonfly/dragonfly -f values.yaml
 ```
 
