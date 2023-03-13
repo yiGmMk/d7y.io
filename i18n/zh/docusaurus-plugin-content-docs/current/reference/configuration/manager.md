@@ -42,6 +42,20 @@ server:
   # macOS(仅开发、测试), 默认目录是 /Users/$USER/.dragonfly/plugins。
   pluginDir: ''
 
+# 认证配置。
+auth:
+  # JWT 配置，用户登录使用。
+  jwt:
+    # 给用户展示的 Realm 名字，默认值是 Dragonfly。
+    realm: 'Dragonfly'
+    # 用户登录时 JWT 使用的密钥，默认值是 dragonfly 的 base64 编码值。
+    # 生产环境不能直接使用，一定要更改其值。
+    key: 'ZHJhZ29uZmx5Cg=='
+    # JWT Token 的过期时间，默认值是 2 天。
+    timeout: 48h
+    # JWT Token 刷新时间，默认值是 2 天。
+    maxRefresh: 48h
+
 # 数据库配置, 当前只支持 mysql 以及 redis。
 database:
   # 数据库类型，支持 mysql、mariadb 以及 postgres。

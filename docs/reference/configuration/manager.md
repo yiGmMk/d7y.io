@@ -44,6 +44,23 @@ server:
   # In macos(just for testing), default value is /Users/$USER/.dragonfly/plugins.
   pluginDir: ''
 
+# Auth configuration.
+auth:
+  # JWT configuration used for sigining.
+  jwt:
+    # Realm name to display to the user, default value is Dragonfly.
+    realm: 'Dragonfly'
+    # Key is secret key used for signing, default value is
+    # encoded base64 of dragonfly.
+    # Please change the key in production.
+    key: 'ZHJhZ29uZmx5Cg=='
+    # Timeout is duration that a jwt token is valid,
+    # default duration is two days.
+    timeout: 48h
+    # MaxRefresh field allows clients to refresh their token
+    # until MaxRefresh has passed, default duration is two days.
+    maxRefresh: 48h
+
 # Database info used for server.
 database:
   # Database type, supported types include mysql, mariadb and postgres.
