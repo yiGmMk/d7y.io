@@ -42,15 +42,12 @@ GRPC 数据指标基于 [go-grpc-prometheus](https://github.com/grpc-ecosystem/g
 
 <!-- markdownlint-disable -->
 
-| Name                                                     | Labels                                                                                       | Type    | Description                                                     |
-| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :-------------------------------------------------------------- |
-| dragonfly_manager_peer_total                             |                                                                                              | gauge   | 当前活跃的 Peer 总个数。                                        |
-| Name                                                     | Labels                                                                                       | Type    | Description                                                     |
-| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :-------------------------------------------------------------- |
-| dragonfly_manager_peer_total                             | version, commit                                                                              | gauge   | 当前活跃的 Peer 总个数。                                        |
-| dragonfly_manager_search_scheduler_cluster_total         | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群总次数。                                |
-| dragonfly_manager_search_scheduler_cluster_failure_total | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群失败次数。                              |
-| dragonfly_manager_version                                | major, minor, git_version, git_commit, platform, build_time, go_version, go_tags, go_gcflags | gauge   | 服务版本信息。                                                  |
+| 名字                                                     | 标签                                                                                         | 类型    | 描述                               |
+| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :--------------------------------- |
+| dragonfly_manager_peer_total                             | version, commit                                                                              | gauge   | 当前活跃的 Peer 总个数。           |
+| dragonfly_manager_search_scheduler_cluster_total         | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群总次数。   |
+| dragonfly_manager_search_scheduler_cluster_failure_total | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群失败次数。 |
+| dragonfly_manager_version                                | major, minor, git_version, git_commit, platform, build_time, go_version, go_tags, go_gcflags | gauge   | 服务版本信息。                     |
 
 <!-- markdownlint-restore -->
 
@@ -60,22 +57,38 @@ GRPC 数据指标基于 [go-grpc-prometheus](https://github.com/grpc-ecosystem/g
 
 <!-- markdownlint-disable -->
 
-| 名字                                                         | 标签                                            | 类型      | 描述                  |
-| :----------------------------------------------------------- | :---------------------------------------------- | :-------- | :-------------------- |
-| dragonfly_scheduler_register_peer_task_total                 | tag                                             | counter   | 注册任务总次数。      |
-| dragonfly_scheduler_register_peer_task_failure_total         | tag                                             | counter   | 注册任务失败次数。    |
-| dragonfly_scheduler_download_total                           | tag                                             | counter   | 下载任务总次数。      |
-| dragonfly_scheduler_download_failure_total                   | tag, type                                       | counter   | 下载任务失败次数。    |
-| dragonfly_scheduler_leave_task_total                         | tag                                             | counter   | 任务释放总个数。      |
-| dragonfly_scheduler_leave_task_failure_total                 | tag                                             | counter   | 任务释放失败个数。    |
-| dragonfly_scheduler_traffic                                  | tag, type                                       | counter   | P2P 流量。            |
-| dragonfly_scheduler_peer_host_traffic                        | tag, traffic_type, peer_host_uuid, peer_host_ip | counter   | 每个主机的 P2P 流量。 |
-| dragonfly_scheduler_peer_task_total                          | tag, type                                       | counter   | 下载任务总个数。      |
-| dragonfly_scheduler_peer_task_download_duration_milliseconds | tag                                             | histogram | 任务下载耗时。        |
-| dragonfly_scheduler_concurrent_schedule_total                |                                                 | gauge     | 并行调度任务个数。    |
-| dragonfly_scheduler_stat_task_total                          |                                                 | counter   | 查询任务总次数。      |
-| dragonfly_scheduler_stat_task_failure_total                  |                                                 | counter   | 查询任务失败次数。    |
-| dragonfly_scheduler_announce_task_total                      |                                                 | counter   | 声明任务总次数。      |
-| dragonfly_scheduler_announce_task_failure_total              |                                                 | counter   | 声明任务失败次数。    |
+| 名字                                                                     | 标签                                                                                                                 | 类型      | 描述                                            |
+| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------- | :---------------------------------------------- |
+| dragonfly_scheduler_announce_peer_total                                  |                                                                                                                      | counter   | 上报 Peer 任务总次数。                          |
+| dragonfly_scheduler_announce_peer_failure_total                          |                                                                                                                      | counter   | 上报 Peer 失败次数。                            |
+| dragonfly_scheduler_stat_peer_total                                      |                                                                                                                      | counter   | 查询 Peer 任务总次数。                          |
+| dragonfly_scheduler_stat_peer_failure_total                              |                                                                                                                      | counter   | 查询 Peer 任务失败次数。                        |
+| dragonfly_scheduler_leave_peer_total                                     |                                                                                                                      | counter   | 释放 Peer 任务总次数。                          |
+| dragonfly_scheduler_leave_peer_failure_total                             |                                                                                                                      | counter   | 释放 Peer 任务失败次数。                        |
+| dragonfly_scheduler_exchange_peer_total                                  |                                                                                                                      | counter   | 交换 Peer 任务信息总次数。                      |
+| dragonfly_scheduler_exchange_peer_failure_total                          |                                                                                                                      | counter   | 交换 Peer 任务信息失败次数。                    |
+| dragonfly_scheduler_register_peer_total                                  | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 注册 Peer 任务总次数。                          |
+| dragonfly_scheduler_register_peer_failure_total                          | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 注册 Peer 任务失败次数。                        |
+| dragonfly_scheduler_download_peer_started_total                          | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 下载 Peer 任务接收 Started Piece 总次数。       |
+| dragonfly_scheduler_download_peer_started_failure_total                  | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 下载 Peer 任务接收 Started Piece 失败次数。     |
+| dragonfly_scheduler_download_peer_back_to_source_started_total           | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 回源下载 Peer 任务接收 Started Piece 总次数。   |
+| dragonfly_scheduler_download_peer_back_to_source_started_failure_total   | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 回源下载 Peer 任务接收 Started Piece 失败次数。 |
+| dragonfly_scheduler_download_peer_finished_total                         | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 下载 Peer 任务完成总次数。                      |
+| dragonfly_scheduler_download_peer_finished_failure_total                 | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 下载 Peer 任务失败次数。                        |
+| dragonfly_scheduler_download_peer_back_to_source_finished_failure_total  | priority, task_type, task_tag, task_app, host_type                                                                   | counter   | 回源下载 Peer 任务失败次数。                    |
+| dragonfly_scheduler_download_piece_finished_total                        | traffic_type, task_type, task_tag, task_app, host_type                                                               | counter   | 下载 Piece 完成总次数。                         |
+| dragonfly_scheduler_download_piece_finished_failure_total                | traffic_type, task_type, task_tag, task_app, host_type                                                               | counter   | 下载 Piece 失败次数。                           |
+| dragonfly_scheduler_download_piece_back_to_source_finished_failure_total | traffic_type, task_type, task_tag, task_app, host_type                                                               | counter   | 回源下载 Piece 失败次数。                       |
+| dragonfly_scheduler_stat_task_total                                      |                                                                                                                      | counter   | 查询任务总次数。                                |
+| dragonfly_scheduler_stat_task_failure_total                              |                                                                                                                      | counter   | 查询任务失败次数。                              |
+| dragonfly_scheduler_announce_host_total                                  | os, platform, platform_family, platform_version, kernel_version, git_version, git_commit, go_version, build_platform | counter   | 上报 Host 总次数。                              |
+| dragonfly_scheduler_announce_host_failure_total                          | os, platform, platform_family, platform_version, kernel_version, git_version, git_commit, go_version, build_platform | counter   | 上报 Host 失败次数。                            |
+| dragonfly_scheduler_leave_host_total                                     |                                                                                                                      | counter   | 释放 Host 总次数。                              |
+| dragonfly_scheduler_leave_host_failure_total                             |                                                                                                                      | counter   | 释放 Host 失败次数。                            |
+| dragonfly_scheduler_traffic                                              | type, task_type, task_tag, task_app, host_type                                                                       | counter   | 总体流量统计。                                  |
+| dragonfly_scheduler_host_traffic                                         | type, task_type, task_tag, task_app, host_type, host_id, host_ip, host_name                                          | counter   | Host 流量统计                                   |
+| dragonfly_scheduler_download_peer_duration_milliseconds                  | priority, task_type, task_tag, task_app, host_type                                                                   | histogram | Peer 任务下载耗时。                             |
+| dragonfly_scheduler_concurrent_schedule_total                            |                                                                                                                      | gauge     | 并行调度 Peer 任务个数。                        |
+| dragonfly_scheduler_version                                              | major, minor, git_version, git_commit, platform, build_time, go_version, go_tags, go_gcflags                         | counter   | 服务版本信息。                                  |
 
 <!-- markdownlint-restore -->
