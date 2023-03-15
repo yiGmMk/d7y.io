@@ -42,9 +42,15 @@ GRPC 数据指标基于 [go-grpc-prometheus](https://github.com/grpc-ecosystem/g
 
 <!-- markdownlint-disable -->
 
-| Name                         | Labels | Type  | Description              |
-| :--------------------------- | :----- | :---- | :----------------------- |
-| dragonfly_manager_peer_total |        | gauge | 当前活跃的 Peer 总个数。 |
+| Name                                                     | Labels                                                                                       | Type    | Description                                                     |
+| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :-------------------------------------------------------------- |
+| dragonfly_manager_peer_total                             |                                                                                              | gauge   | 当前活跃的 Peer 总个数。                                        |
+| Name                                                     | Labels                                                                                       | Type    | Description                                                     |
+| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :-------------------------------------------------------------- |
+| dragonfly_manager_peer_total                             | version, commit                                                                              | gauge   | 当前活跃的 Peer 总个数。                                        |
+| dragonfly_manager_search_scheduler_cluster_total         | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群总次数。                                |
+| dragonfly_manager_search_scheduler_cluster_failure_total | version, commit                                                                              | counter | Peer 搜索 Scheduler 集群失败次数。                              |
+| dragonfly_manager_version                                | major, minor, git_version, git_commit, platform, build_time, go_version, go_tags, go_gcflags | gauge   | 服务版本信息。                                                  |
 
 <!-- markdownlint-restore -->
 

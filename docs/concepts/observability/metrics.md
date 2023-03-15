@@ -42,9 +42,12 @@ GRPC metrics are exposed via [go-grpc-prometheus](https://github.com/grpc-ecosys
 
 <!-- markdownlint-disable -->
 
-| Name                         | Labels | Type  | Description                  |
-| :--------------------------- | :----- | :---- | :--------------------------- |
-| dragonfly_manager_peer_total |        | gauge | Gauge of the number of peer. |
+| Name                                                     | Labels                                                                                       | Type    | Description                                                     |
+| :------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :------ | :-------------------------------------------------------------- |
+| dragonfly_manager_peer_total                             | version, commit                                                                              | gauge   | Gauge of the number of peer.                                    |
+| dragonfly_manager_search_scheduler_cluster_total         | version, commit                                                                              | counter | Counter of the number of searching scheduler cluster.           |
+| dragonfly_manager_search_scheduler_cluster_failure_total | version, commit                                                                              | counter | Counter of the number of failed of searching scheduler cluster. |
+| dragonfly_manager_version                                | major, minor, git_version, git_commit, platform, build_time, go_version, go_tags, go_gcflags | gauge   | Version info of the service.                                    |
 
 <!-- markdownlint-restore -->
 
