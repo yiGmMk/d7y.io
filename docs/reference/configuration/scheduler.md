@@ -14,6 +14,9 @@ server:
   # # Access ip for other services,
   # # when local ip is different with access ip, advertiseIP should be set.
   # advertiseIP: 127.0.0.1
+  # # Access port for other services,
+  # # when local ip is different with access port, advertisePort should be set.
+  # advertisePort: 8002
   # # Listen ip.
   # listenIP: 0.0.0.0
   # Port is the ip and port scheduler server listens on.
