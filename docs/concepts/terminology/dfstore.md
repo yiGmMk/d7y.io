@@ -117,7 +117,7 @@ manager:
     - type: tcp
       addr: manager-service:65003
   # Scheduler list refresh interval
-  refreshInterval: 10s
+  refreshInterval: 10m
 objectStorage:
   # Enable object storage service
   enable: true

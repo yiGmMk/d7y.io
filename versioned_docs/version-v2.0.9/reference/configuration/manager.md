@@ -116,13 +116,13 @@ cache:
   # Redis cache configure.
   redis:
     # Cache ttl configure.
-    ttl: 30s
+    ttl: 5m
   # Local cache configure.
   local:
     # LFU cache size.
-    size: 10000
+    size: 200000
     # Cache ttl configure.
-    ttl: 10s
+    ttl: 3m
 
 # Object storage service.
 objectStorage:

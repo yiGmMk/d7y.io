@@ -110,13 +110,13 @@ cache:
   # Redis 缓存配置。
   redis:
     # ttl 配置。
-    ttl: 30s
+    ttl: 5m
   # 本地缓存配置。
   local:
     # LFU 缓存大小。
-    size: 10000
+    size: 200000
     # ttl 配置。
-    ttl: 10s
+    ttl: 3m
 
 # 对象存储服务。
 objectStorage:

@@ -72,7 +72,7 @@ scheduler:
       - type: tcp
         addr: manager-service:65003
     # Scheduler list refresh interval.
-    refreshInterval: 5m
+    refreshInterval: 10m
     # Seed peer configuration.
     seedPeer:
       # Dfdaemon enabled seed peer mode.

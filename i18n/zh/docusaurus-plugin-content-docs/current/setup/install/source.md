@@ -151,7 +151,7 @@ scheduler:
     netAddrs:
       - type: tcp
         addr: manager-service:65003
-    refreshInterval: 10s
+    refreshInterval: 10m
     seedPeer:
       enable: true
       type: 'super'
