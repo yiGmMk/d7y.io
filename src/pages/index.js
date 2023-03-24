@@ -116,12 +116,13 @@ export default function Home() {
       herf: 'https://www.huya.com/',
       name: ' Huya',
     },
-    {
-      imgURL: 'img/user/intel.svg',
-      alt: 'intel',
-      herf: 'https://www.intel.cn/',
-      name: 'Intel',
-    },
+    // TODO There is an internal process to get that approval.
+    // {
+    // imgURL: 'img/user/intel.svg',
+    // alt: 'intel',
+    // herf: 'https://www.intel.cn/',
+    // name: 'Intel',
+    // },
     {
       imgURL: 'img/user/jd.png',
       alt: 'jd',
@@ -198,7 +199,8 @@ export default function Home() {
   const PartnersList = [
     { imgURL: 'img/partners/ant-group.svg', alt: 'ant-group' },
     { imgURL: 'img/partners/alibaba-group.svg', alt: 'alibaba-group' },
-    { imgURL: 'img/partners/intel.svg', alt: 'intel' },
+    // TODO There is an internal process to get that approval.
+    // { imgURL: 'img/partners/intel.svg', alt: 'intel' },
     { imgURL: 'img/partners/douyin.png', alt: 'douyin' },
     { imgURL: 'img/partners/kuaishou.svg', alt: 'kuaishou' },
     { imgURL: 'img/partners/baidu.svg', alt: 'baidu' },
