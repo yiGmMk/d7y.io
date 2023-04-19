@@ -100,8 +100,6 @@ host:
   location: ''
   # 机房信息。
   idc: ''
-  # 安全域信息，不同安全域之间网络隔离。
-  securityDomain: ''
   # 主机名称。
   # hostname: ""
 

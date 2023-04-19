@@ -102,8 +102,6 @@ host:
   location: ''
   # IDC deployed by daemon.
   idc: ''
-  # Security domain deployed by daemon, network isolation between different security domains.
-  securityDomain: ''
   # Daemon hostname.
   # hostname: ""
 
